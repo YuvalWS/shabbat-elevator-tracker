@@ -1,0 +1,30 @@
+# Home Assistant for local development and demos only (docker-compose.dev.yml, service
+# "homeassistant"). The port is published on 127.0.0.1 only, and the login screen lets you
+# pick the dev user without a password (trusted_networks). Do not reuse this config elsewhere.
+
+default_config:
+
+homeassistant:
+  name: Elevator dev
+  unit_system: metric
+  time_zone: Asia/Jerusalem
+  country: IL
+  auth_providers:
+    - type: trusted_networks       # first = the login screen's default: pick the user
+      trusted_networks: [127.0.0.1, "::1", 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16]
+      allow_bypass_login: true
+    - type: homeassistant
+
+lovelace:
+  dashboards:
+    shabbat-elevator:
+      mode: yaml
+      title: Shabbat Elevator
+      icon: mdi:elevator-passenger
+      show_in_sidebar: true
+      filename: dashboards/shabbat-elevator.yaml
+
+logger:
+  default: warning
+  logs:
+    custom_components.shabbat_elevator_tracker: debug

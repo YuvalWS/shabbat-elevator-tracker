@@ -16,7 +16,7 @@ from homeassistant.helpers import entity_registry as er
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.shabbat_elevator_tracker.const import CONF_HOME_FLOOR, CONF_URL, DOMAIN
-from custom_components.shabbat_elevator_tracker.model import next_arrival
+from custom_components.shabbat_elevator_tracker.model import building_name, next_arrival
 
 URL = "http://elevator.test:8080"
 FX = json.loads((Path(__file__).parent / "fixtures.json").read_text())
@@ -76,7 +76,7 @@ async def test_config_flow_already_configured(hass: HomeAssistant, aioclient_moc
 
 
 async def test_entities_when_locked(hass: HomeAssistant, aioclient_mock):
-    await setup_entry(hass, aioclient_mock)
+    entry = await setup_entry(hass, aioclient_mock)
     ent = er.async_get(hass)
     nid = ent.async_get_entity_id("sensor", DOMAIN, f"{IID}_next_arrival")
     st = hass.states.get(nid)
@@ -88,11 +88,8 @@ async def test_entities_when_locked(hass: HomeAssistant, aioclient_mock):
     assert hass.states.get(ent.async_get_entity_id("binary_sensor", DOMAIN, f"{IID}_issur_melacha")).state == "on"
     cyc = hass.states.get(ent.async_get_entity_id("sensor", DOMAIN, f"{IID}_cycle_length"))
     assert float(cyc.state) == pytest.approx(LOCKED["cycle"]["seconds"])
-    # per-floor sensors exist, disabled by default unless tracked
-    other = ent.async_get(ent.async_get_entity_id("sensor", DOMAIN, f"{IID}_next_arrival_floor_7"))
-    assert other.disabled_by is not None
-    home = ent.async_get(ent.async_get_entity_id("sensor", DOMAIN, f"{IID}_next_arrival_floor_3"))
-    assert home.disabled_by is None
+    # one next-arrival sensor, for your floor
+    assert not [e for e in er.async_entries_for_config_entry(ent, entry.entry_id) if "_floor_" in e.unique_id]
     car = ent.async_get(ent.async_get_entity_id("sensor", DOMAIN, f"{IID}_car_position"))
     assert car.disabled_by is not None
 
@@ -120,10 +117,12 @@ async def test_options_flow(hass: HomeAssistant, aioclient_mock):
     entry = await setup_entry(hass, aioclient_mock)
     r = await hass.config_entries.options.async_init(entry.entry_id)
     assert r["type"] is FlowResultType.FORM
-    r = await hass.config_entries.options.async_configure(r["flow_id"], {CONF_HOME_FLOOR: "G", "extra_floors": ["5"]})
+    r = await hass.config_entries.options.async_configure(r["flow_id"], {CONF_HOME_FLOOR: "G"})
     assert r["type"] is FlowResultType.CREATE_ENTRY
     await hass.async_block_till_done()
     assert entry.options[CONF_HOME_FLOOR] == "G"
+    nid = er.async_get(hass).async_get_entity_id("sensor", DOMAIN, f"{IID}_next_arrival")
+    assert hass.states.get(nid).attributes["floor"] == "G"
 
 
 async def test_diagnostics_redacts_url(hass: HomeAssistant, aioclient_mock):
@@ -146,3 +145,10 @@ def test_model_matches_server():
             assert n is None
         else:
             assert abs(n["arrive_at"] - v["arrive_at_ms"]) <= 1
+
+
+def test_building_name_per_language():
+    b = {"name": {"en": "Oak 5", "fr": "Chene 5"}}
+    assert building_name(b, "fr") == "Chene 5"
+    assert building_name(b, "pt-BR") == "Oak 5"
+    assert building_name({"name": "Plain"}, "he") == "Plain"

@@ -19,9 +19,9 @@
  "next.then": "Le suivant à {time}",
  "status.synced_ago": "Synchronisé {ago} ({time})",
  "status.never_synced": "Pas encore synchronisé",
- "status.audio_live": "Audio : en direct",
- "status.audio_lost": "Audio perdu {ago}",
- "status.audio_connecting": "Audio : connexion",
+ "status.audio_live": "Capteur OK",
+ "status.audio_lost": "Capteur hors service ({ago})",
+ "status.audio_connecting": "Capteur : connexion",
  "status.server_down": "Serveur injoignable",
  "status.server_version": "La version d'API du serveur ({v}) n'est pas prise en charge",
  "ago.now": "à l'instant",
@@ -224,5 +224,8 @@
  "month.sivan": "Sivan",
  "month.tammuz": "Tamouz",
  "month.av": "Av",
- "month.elul": "Eloul"
+ "month.elul": "Eloul",
+ "floor.change": "Changer d'étage",
+ "floor.cancel": "Annuler",
+ "about.made_by": "Réalisé par"
 }

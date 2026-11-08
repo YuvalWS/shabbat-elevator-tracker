@@ -39,7 +39,7 @@ needs to push when something changes.
                      "days": [{"date": "2026-11-07", "ids": ["shabbat"]}]},
     "next_span": {"…": "…"},
     "parsha_ids": ["chayei_sara"], "today_ids": ["shabbat"],
-    "hebrew_date": {"day": 27, "month_id": "marcheshvan", "year": 5787},
+    "hebrew_date": {"day": 27, "month_id": "marcheshvan", "year": 5787, "day_he": "…", "year_he": "…"},
     "timezone": "Asia/Jerusalem"
   },
   "debug_enabled": true

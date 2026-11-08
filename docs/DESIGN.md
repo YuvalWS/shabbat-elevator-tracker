@@ -1,8 +1,10 @@
 # Shabbat Elevator Tracker — Design Document
 
-Status: **rev 4** (2026-11-07): implemented as v0.1. Rev 3 added the hdate calendar,
+Status: **rev 5** (2026-11-08): implemented as v0.1. Rev 3 added the hdate calendar,
 GPL-3.0-or-later, authenticated audio sources and the Givat Shmuel location; rev 4 records
-what changed during implementation (section 23).
+what changed during implementation (section 23); rev 5 adds the one-time floor picker,
+the short-landscape layout, Hebrew numerals, per-language building names and a local Home
+Assistant for development (23.1).
 
 This document is the implementation spec. It is written so an implementer (human or
 model) can build the project milestone by milestone (section 20) without re-deriving
@@ -174,7 +176,7 @@ all work); their order in `building.floors` is bottom to top and defines distanc
 
 ```yaml
 building:
-  name: "Example building"
+  name: "Example building"       # or per UI language: {en: "...", he: "...", fr: "..."}
   floors: ["G","1","2","3","4","5","6","7","8","9","10","11","12"]   # bottom → top
   default_floor: null            # floor preselected in the UI; null = force a choice
 
@@ -468,7 +470,7 @@ CORS per `cors_origins`. Every response includes `server_time` and `clock_rate`
     "current_span": {"start":"…","end":"…","days":[{"date":"2026-11-07","ids":["shabbat"]}]},
     "next_span": {"start":"…","end":"…","window_start":"…","window_end":"…","days":[]},
     "parsha_ids": ["chayei_sara"],
-    "hebrew_date": {"day": 27, "month_id": "marcheshvan", "year": 5787}
+    "hebrew_date": {"day": 27, "month_id": "marcheshvan", "year": 5787, "day_he": "…", "year_he": "…"}
   }
 }
 ```
@@ -534,8 +536,11 @@ same origin).
 
 ### 12.2 Content (all sizes)
 
-- **Floor selector**: no implicit default unless `building.default_floor`; saved in
-  `localStorage` per API base. ≥ 44 px targets; mouse, touch and keyboard.
+- **Floor selector**: a one-time choice. Until a floor is chosen (no implicit default
+  unless `building.default_floor`) the page shows only a big "Choose your floor" grid;
+  afterwards it shows "Next arrival at floor **N**" with a pencil button that reopens the
+  grid (Cancel / Esc closes it). Saved in `localStorage` per API base. ≥ 44 px targets;
+  mouse, touch and keyboard.
 - **Next arrival at my floor**: clock time (`14:38:52`) **and** countdown (`3:12`). At the
   floor: "Here now — doors close in 0:06". Ticks every 250 ms locally.
 - **Last sync** ("Synced 2 min ago, 14:31:40") and **audio status** ("Audio: live" /
@@ -551,13 +556,14 @@ same origin).
 
 | Tier | Viewport | Layout |
 |---|---|---|
-| `xs` | width < 360 px **or** height < 420 px | Text only: floor, big countdown, arrival time, one status line, compact Shabbat line. Gear for settings. |
+| `xs` | width < 360 px **or** height < 500 px | Text only: floor, big countdown, arrival time, one status line, compact Shabbat line. Gear for settings. In landscape (e.g. a small phone on its side): two columns, countdown on one side, status and candle lighting / havdalah on the other, no footer; everything fits without scrolling. |
 | `md` | between | Text block + horizontal **route strip** (stops as chips, car position highlighted, my floor marked) + Shabbat card. |
 | `lg` | width ≥ 900 **and** height ≥ 600 | Text panel + **shaft illustration**: vertical SVG shaft, labelled floors, car moving smoothly, doors sliding open/closed by `door_open`/`door_close`, direction arrow, my floor highlighted, long G stop visible; route strip; Shabbat card. |
 
-Test sizes: 320×568, 375×667, 390×844, 844×390, 768×1024, 1024×768, 1366×768,
-1920×1080, 2560×1440 — no horizontal scroll and nothing clipped, in both themes and all
-three languages (Hebrew in RTL).
+Test sizes: 320×568, 375×667, 390×844, 844×390, 432×295, 568×320, 740×360, 932×430,
+768×1024, 1024×768, 1366×768, 1920×1080, 2560×1440 — no horizontal scroll and nothing
+clipped, in both themes and all three languages (Hebrew in RTL); short landscape sizes
+also without vertical scroll.
 
 ### 12.4 Theme
 
@@ -571,7 +577,9 @@ the illustration uses tokens/`currentColor`. Text contrast ≥ 4.5:1.
 - Hebrew sets `<html lang="he" dir="rtl">`. Layout uses logical CSS properties
   (`margin-inline-start`, `inset-inline-end`, …) so RTL needs no separate stylesheet. The
   shaft stays vertical; panels mirror. Countdown digits stay LTR (`<bdi dir="ltr">`).
-- Dates/times via `Intl.DateTimeFormat(lang)`; 24 h by default, 12 h toggle.
+- Dates/times via `Intl.DateTimeFormat(lang)`; 24 h by default, 12 h toggle. In Hebrew
+  the Hebrew date uses Hebrew numerals for day and year (28 Cheshvan 5787 is written
+  with the letters for 28 and 787; computed by hdate, see 11.1).
 - The server sends **ids** (parsha, holidays, months, states, reasons); every
   user-visible name comes from the strings files. Each file contains: UI strings, 54
   parsha names, holiday names, Hebrew month names.
@@ -620,7 +628,8 @@ Predictions are absolute timestamps, so HA never needs per-second updates.
 
 - Config flow: URL → validate with `/health` and `api_version`. Unique id = server
   `instance_id` (UUID created once in the data dir).
-- Options flow: home floor (from `building.floors`), additional floors.
+- Your floor is chosen in the setup flow; *Configure* (options flow) shows the same floor
+  form to change it. One floor per integration entry, no per-floor entities.
 - Optional zeroconf (`_shabbat-elevator._tcp`), low priority.
 
 ### 13.4 Entities (one device per server)
@@ -628,13 +637,12 @@ Predictions are absolute timestamps, so HA never needs per-second updates.
 | Entity | Type | Notes |
 |---|---|---|
 | `sensor.<name>_next_arrival` | timestamp | Home floor; attributes `floor`, `depart_at`. Unavailable when the prediction is invalid. |
-| `sensor.<name>_next_arrival_floor_<x>` | timestamp | One per floor, **disabled by default** except tracked ones. |
 | `sensor.<name>_last_sync` | timestamp | |
 | `sensor.<name>_sync_state` | enum | idle / searching / provisional / locked / paused |
 | `sensor.<name>_cycle_length` | duration (s) | |
 | `binary_sensor.<name>_audio_stream` | connectivity | |
-| `binary_sensor.<name>_running` | running | on when locked |
-| `binary_sensor.<name>_shabbat_window` | — | on inside the expected elevator window; attributes start/end |
+| `binary_sensor.<name>_elevator_running` | running | on when locked |
+| `binary_sensor.<name>_shabbat_elevator_window` | — | on inside the expected elevator window; attributes start/end |
 | `binary_sensor.<name>_issur_melacha` | — | on from candle lighting to havdalah (hdate) |
 | `sensor.<name>_car_position` | text | Estimated floor or "3→1", 5 s local timer, **disabled by default** (recorder churn). |
 | Event `shabbat_elevator_tracker_sync` | bus | `{anchor_time, cycle_seconds}` on each sync |
@@ -642,7 +650,12 @@ Predictions are absolute timestamps, so HA never needs per-second updates.
 Diagnostics download (redacted), `translations/en.json`, `he.json`, `fr.json`;
 `manifest.json` with `version`, `codeowners`, `iot_class`, `config_flow: true`.
 
-README automation example: notify 60 s before arrival at my floor.
+The integration's README (`custom_components/shabbat_elevator_tracker/README.md`) has the
+entity list, a ready **dashboard** (YAML, sections view: next arrival at my floor,
+relative and clock time, hidden while not running; sync state and last sync; issur
+melacha, elevator window, running, audio; 24 h history) and an automation example
+(notify 60 s before arrival at my floor). The device name follows the building name in
+Home Assistant's language.
 
 ## 14. Deployment
 
@@ -803,6 +816,16 @@ sync. Generated on the fly in tests (no audio committed except, if useful, a few
   recordings endlessly at real time; timestamps are wall-clock now, so the web client
   and HA see a live-looking elevator. `--loop-start 06:00` starts at a time of day
   (skips into the files). The loop seam is a phase jump: a good re-sync test.
+- **Docker loop** (`docker-compose.dev.yml`, service `loop`): one container reading
+  `test-data/recordings` as a loop, web client on port 8099. `LOOP_SPEED` (default 10)
+  sets the clock speed; Home Assistant needs 1, because it shows arrivals against its
+  own real clock. `TRACKER_CONFIG` picks a local config. Both come from a git-ignored
+  `.env`.
+- **Home Assistant** (`docker-compose.dev.yml`, service `homeassistant`): the integration
+  mounted read-only, the dashboard in YAML mode, published on 127.0.0.1 only with a
+  password-less login for this machine (`tools/ha-dev/configuration.yaml`).
+  `tools/ha-dev/setup.py` onboards, adds the integration (floor 3) and writes the
+  dashboard with the device's entity IDs.
 - **RTSP loop** (`docker-compose.dev.yml`): `mediamtx` + an ffmpeg publisher looping the
   recordings to `rtsp://mediamtx:8554/elevator`, and the service consuming it. Stopping
   the publisher tests "audio lost" and reconnect.
@@ -939,3 +962,25 @@ Changes made while implementing, with the reason:
 - **Reference results (v0.1)**: tier 1 replay 24/26 anchors synced (the other 2 are the
   confirmations), no false syncs, pause detected 03:19:49, re-locked 06:12:54, cycle
   404.45 s, ~30 s for 6 h; calibrate 404.5 s (σ 0.18), band 200–4000 Hz, 29 s.
+
+### 23.1 Rev 5 (2026-11-08)
+
+- **One-time floor picker** (12.2) and **short landscape layout** (12.3): the tier
+  threshold moved from height < 420 to < 500 px so landscape phones up to ~930 px wide
+  get the compact two-column layout instead of a scrolling `md` page.
+- **Hebrew numerals** for the Hebrew date in the Hebrew UI (12.5): the API's
+  `hebrew_date` also carries `day_he` / `year_he` from hdate's `hebrew_number` (year
+  without the thousands).
+- **Per-language building name**: `building.name` may be `{lang: name}`; the web client
+  and the HA device pick the current language, then `en`, then the first one.
+- **Restore ignores a future snapshot**: a `state.json` whose times are ahead of the clock
+  (clock moved back, or saved by a sped-up dev clock and kept in the image's `/data`
+  volume) is not restored, apart from the cycle and the reference sound. Seen as "synced
+  just now" with a sync time hours ahead.
+- **Env overrides keep clock times as strings**: `SET_CFG__audio__loop_start=00:56` was
+  read by YAML 1.1 as the base-60 number 56.
+- **HA: one floor.** The per-floor sensors and the "additional floors" option are gone:
+  the floor is picked in the setup flow and changed under *Configure* with the same form.
+- **Plainer status wording**: "Sensor OK" / "Sensor offline" (Hebrew: "sensor OK")
+  instead of "Audio: live"; the picker asks for *your* floor.
+

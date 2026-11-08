@@ -13,6 +13,7 @@ node_modules/
 /test-data/
 /data/
 /config.yaml
+/.env
 *.wav
 *.wav.part
 !tests/fixtures/synthetic/*.wav

@@ -65,6 +65,15 @@ def test_env_overrides():
     assert cfg.audio["auth"]["type"] == "basic"
 
 
+def test_building_name_per_language():
+    cfg = config_from_dict({"building": {"name": {"en": "Oak 5", "fr": "Chene 5"}}})
+    assert cfg.building["name"]["fr"] == "Chene 5"
+    with pytest.raises(ConfigError, match="building.name"):
+        config_from_dict({"building": {"name": {"en": 5}}})
+    with pytest.raises(ConfigError, match="building.name"):
+        config_from_dict({"building": {"name": ""}})
+
+
 def test_env_clock_time_stays_string():
     cfg = config_from_dict({}, env={"SET_CFG__audio__loop_start": "00:56"})
     assert cfg.audio["loop_start"] == "00:56"

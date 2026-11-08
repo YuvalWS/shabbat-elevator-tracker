@@ -106,3 +106,10 @@ def test_hebrew_date_changes_at_sunset():
     c = cal()
     assert c.state(at(2026, 11, 7, 12))["hebrew_date"]["day"] == 27
     assert c.state(at(2026, 11, 7, 18))["hebrew_date"]["day"] == 28
+
+
+def test_hebrew_numerals_from_hdate():
+    hd = cal().state(at(2026, 11, 7, 18))["hebrew_date"]
+    h = lambda *cps: "".join(map(chr, cps))  # noqa: E731
+    assert hd["day_he"] == h(0x5DB, 0x22, 0x5D7)                # 28
+    assert hd["year_he"] == h(0x5EA, 0x5E9, 0x5E4, 0x22, 0x5D6)  # (5)787

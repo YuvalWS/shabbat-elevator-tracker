@@ -24,14 +24,19 @@
 
   <main class="main">
     <section class="panel text-panel">
-      <div class="floor-picker">
-        <label for="floor-select" class="floor-label" data-i18n="floor.label">My floor</label>
-        <select id="floor-select" class="floor-select"></select>
-        <div class="floor-chips" id="floor-chips" role="radiogroup"></div>
+      <div class="floor-picker" id="floor-picker" hidden>
+        <h2 class="picker-title" id="picker-title" data-i18n="floor.choose">Choose your floor</h2>
+        <div class="floor-chips" id="floor-chips" role="radiogroup" aria-labelledby="picker-title"></div>
+        <button type="button" class="text-btn" id="floor-cancel" data-i18n="floor.cancel" hidden>Cancel</button>
       </div>
 
       <div class="next" id="next">
-        <div class="next-title" id="next-title"></div>
+        <div class="next-head">
+          <div class="next-title" id="next-title"></div>
+          <button class="icon-btn edit-btn" id="btn-floor" type="button" data-i18n-title="floor.change" aria-label="Change floor" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4zM13.5 6.5l4 4"/></svg>
+          </button>
+        </div>
         <div class="countdown" id="countdown"><bdi dir="ltr" id="countdown-value">--:--</bdi></div>
         <div class="next-at" id="next-at"></div>
         <div class="next-then" id="next-then"></div>
@@ -70,8 +75,11 @@
   </section>
 
   <footer class="foot">
-    <span data-i18n="about.credit">Based on the idea of</span>
-    <a href="https://github.com/udid/shabat_elevator" target="_blank" rel="noopener">udid/shabat_elevator</a>
+    <span><span data-i18n="about.made_by">Made by</span>
+      <a href="https://github.com/YuvalWS" target="_blank" rel="noopener">YuvalWS</a></span>
+    <span class="sep">·</span>
+    <span><span data-i18n="about.credit">Based on the idea of</span>
+      <a href="https://github.com/udid/shabat_elevator" target="_blank" rel="noopener">udid/shabat_elevator</a></span>
     <span class="sep">·</span>
     <a href="https://github.com/YuvalWS/shabbat-elevator-tracker" target="_blank" rel="noopener" data-i18n="about.source">Source code</a>
     <span class="sep">·</span>
@@ -116,6 +124,8 @@
 
     <div class="field about"><span data-i18n="settings.about">About</span>
       <p data-i18n="about.text"></p>
+      <p><span data-i18n="about.made_by">Made by</span>
+        <a href="https://github.com/YuvalWS" target="_blank" rel="noopener">YuvalWS</a>.</p>
       <p><span data-i18n="about.credit">Based on the idea of</span>
         <a href="https://github.com/udid/shabat_elevator" target="_blank" rel="noopener">udid/shabat_elevator</a>.</p>
       <p><a href="https://github.com/YuvalWS/shabbat-elevator-tracker" target="_blank" rel="noopener" data-i18n="about.source">Source code</a>

@@ -103,29 +103,11 @@ Install `custom_components/shabbat_elevator_tracker` (HACS custom repository, or
 the folder), then *Settings → Devices & services → Add integration → Shabbat Elevator
 Tracker* and enter the server URL. It uses push (SSE) and falls back to polling.
 
-Entities: next arrival at your floor (timestamp), per-floor next arrival (disabled by
-default), last sync, sync state, cycle length, audio stream, elevator running, Shabbat
-window, issur melacha, car position (disabled by default). Event
-`shabbat_elevator_tracker_sync` fires on each sync.
-
-Example: notify one minute before the elevator reaches your floor:
-
-```yaml
-automation:
-  - alias: Elevator in one minute
-    triggers:
-      - trigger: time
-        at: sensor.example_building_next_arrival
-        offset: "-00:01:00"
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.example_building_elevator_running
-        state: "on"
-    actions:
-      - action: notify.mobile_app_phone
-        data:
-          message: "Elevator at your floor in 1 minute"
-```
+Entities: next arrival at your floor (chosen in the setup form, changed under
+*Configure*), last sync, sync state, cycle length, audio stream, elevator running, Shabbat window, issur melacha, car
+position. The [integration README](custom_components/shabbat_elevator_tracker/README.md)
+has the entity list, a ready dashboard, an automation example, and a local Home
+Assistant in Docker to try it.
 
 ## API
 
@@ -143,7 +125,11 @@ sh tools/run-ha-tests.sh                 # Home Assistant tests (Docker)
 
 Tests on real recordings run when `test-data/` exists locally (it is git-ignored and
 never pushed). For a live-looking demo from recordings:
-`SET_DEV_CLOCK_SPEED=10` with `audio.source: "loop:<dir>"` plays them 10× faster.
+`SET_DEV_CLOCK_SPEED=10` with `audio.source: "loop:<dir>"` plays them 10× faster. In
+Docker, `docker compose -f docker-compose.dev.yml up --build loop` does that and serves the
+web client on <http://localhost:8099>; add `homeassistant` for a local Home Assistant
+(see the integration README). A git-ignored `.env` can set `TRACKER_CONFIG=./config.yaml`
+(your own building) and `LOOP_SPEED=1` (real time, needed for Home Assistant).
 
 Design and decisions: [docs/DESIGN.md](docs/DESIGN.md).
 

@@ -8,7 +8,7 @@
  "header.language": "שפה",
  "header.theme": "ערכת צבעים",
  "floor.label": "הקומה שלי",
- "floor.choose": "בחרו קומה",
+ "floor.choose": "בחרו את הקומה שלכם",
  "floor.name": "קומה {floor}",
  "floor.not_on_route": "מעלית השבת אינה עוצרת בקומה {floor}",
  "next.title": "ההגעה הבאה לקומה {floor}",
@@ -19,9 +19,9 @@
  "next.then": "הבאה אחריה בשעה {time}",
  "status.synced_ago": "סונכרן {ago} ({time})",
  "status.never_synced": "עדיין לא סונכרן",
- "status.audio_live": "שמע: פעיל",
- "status.audio_lost": "השמע אבד {ago}",
- "status.audio_connecting": "שמע: מתחבר",
+ "status.audio_live": "חיישן תקין",
+ "status.audio_lost": "החיישן לא תקין ({ago})",
+ "status.audio_connecting": "חיישן: מתחבר",
  "status.server_down": "אין חיבור לשרת",
  "status.server_version": "גרסת ה-API של השרת ({v}) אינה נתמכת בדף זה",
  "ago.now": "הרגע",
@@ -224,5 +224,8 @@
  "month.sivan": "סיוון",
  "month.tammuz": "תמוז",
  "month.av": "אב",
- "month.elul": "אלול"
+ "month.elul": "אלול",
+ "floor.change": "החלפת קומה",
+ "floor.cancel": "ביטול",
+ "about.made_by": "פותח על ידי"
 }

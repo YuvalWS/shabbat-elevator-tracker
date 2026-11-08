@@ -1,4 +1,4 @@
-"""Sensors: next arrival per floor, last sync, sync state, cycle length, car position."""
+"""Sensors: next arrival at your floor, last sync, sync state, cycle length, car position."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.event import async_track_point_in_utc_time, async_track_time_interval
 
 from . import ElevatorConfigEntry
-from .const import CONF_EXTRA_FLOORS, CONF_HOME_FLOOR, SYNC_STATES
+from .const import CONF_HOME_FLOOR, SYNC_STATES
 from .entity import ElevatorEntity
 from .model import next_arrival, position
 
@@ -23,33 +23,23 @@ def _dt(ms: float | None) -> datetime | None:
 async def async_setup_entry(hass: HomeAssistant, entry: ElevatorConfigEntry,
                             async_add_entities: AddConfigEntryEntitiesCallback) -> None:
     coordinator = entry.runtime_data
-    home = entry.options.get(CONF_HOME_FLOOR)
-    tracked = {home, *entry.options.get(CONF_EXTRA_FLOORS, [])}
     entities: list[SensorEntity] = []
-    if home:
-        entities.append(NextArrivalSensor(coordinator, home, home=True, enabled=True))
-    for f in coordinator.data["building"]["floors"]:
-        entities.append(NextArrivalSensor(coordinator, f, home=False, enabled=f in tracked))
+    if home := entry.options.get(CONF_HOME_FLOOR):
+        entities.append(NextArrivalSensor(coordinator, home))
     entities += [LastSyncSensor(coordinator), SyncStateSensor(coordinator), CycleSensor(coordinator),
                  CarPositionSensor(coordinator)]
     async_add_entities(entities)
 
 
 class NextArrivalSensor(ElevatorEntity, SensorEntity):
-    """Next arrival at a floor. Recomputed locally when the elevator leaves the floor."""
+    """Next arrival at your floor. Recomputed locally when the elevator leaves the floor."""
 
     _attr_device_class = SensorDeviceClass.TIMESTAMP
+    _attr_translation_key = "next_arrival"
 
-    def __init__(self, coordinator, floor: str, home: bool, enabled: bool) -> None:
-        super().__init__(coordinator, "next_arrival" if home else f"next_arrival_floor_{floor}")
+    def __init__(self, coordinator, floor: str) -> None:
+        super().__init__(coordinator, "next_arrival")
         self.floor = floor
-        self.home = home
-        if home:
-            self._attr_translation_key = "next_arrival"
-        else:
-            self._attr_translation_key = "next_arrival_floor"
-            self._attr_translation_placeholders = {"floor": floor}
-        self._attr_entity_registry_enabled_default = enabled
         self._unsub: CALLBACK_TYPE | None = None
         self._value: dict | None = None
 

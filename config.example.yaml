@@ -6,7 +6,7 @@
 # up on the even floors and down on the odd ones.
 
 building:
-  name: "Example building"
+  name: "Example building"       # or per UI language: {en: "Example building", he: "...", fr: "..."}
   floors: ["G", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]  # bottom -> top
   default_floor: null            # floor preselected in the UI; null = ask
 

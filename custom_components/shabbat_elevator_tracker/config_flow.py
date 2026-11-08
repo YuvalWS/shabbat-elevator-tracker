@@ -10,8 +10,15 @@ from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers import selector
 
-from .const import API_VERSION, CONF_EXTRA_FLOORS, CONF_HOME_FLOOR, CONF_URL, DOMAIN
+from .const import API_VERSION, CONF_HOME_FLOOR, CONF_URL, DOMAIN
 from .coordinator import ApiError, fetch_json
+from .model import building_name
+
+
+def floor_schema(floors: list[str], default: str) -> vol.Schema:
+    """Your floor: the same form when adding the integration and under Configure."""
+    return vol.Schema({vol.Required(CONF_HOME_FLOOR, default=default): selector.SelectSelector(
+        selector.SelectSelectorConfig(options=floors, mode=selector.SelectSelectorMode.DROPDOWN))})
 
 
 class ElevatorConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -50,16 +57,12 @@ class ElevatorConfigFlow(ConfigFlow, domain=DOMAIN):
         floors = self._state["building"]["floors"]
         if user_input is not None:
             return self.async_create_entry(
-                title=self._state["building"]["name"],
+                title=building_name(self._state["building"], self.hass.config.language),
                 data={CONF_URL: self._url},
-                options={CONF_HOME_FLOOR: user_input[CONF_HOME_FLOOR], CONF_EXTRA_FLOORS: []},
+                options={CONF_HOME_FLOOR: user_input[CONF_HOME_FLOOR]},
             )
         default = self._state["building"].get("default_floor") or floors[0]
-        return self.async_show_form(
-            step_id="floor",
-            data_schema=vol.Schema({vol.Required(CONF_HOME_FLOOR, default=default): selector.SelectSelector(
-                selector.SelectSelectorConfig(options=floors, mode=selector.SelectSelectorMode.DROPDOWN))}),
-        )
+        return self.async_show_form(step_id="floor", data_schema=floor_schema(floors, default))
 
     @staticmethod
     @callback
@@ -68,19 +71,11 @@ class ElevatorConfigFlow(ConfigFlow, domain=DOMAIN):
 
 
 class ElevatorOptionsFlow(OptionsFlow):
+    """Configure: change your floor."""
+
     async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         if user_input is not None:
-            return self.async_create_entry(data=user_input)
-        coordinator = self.config_entry.runtime_data
-        floors = coordinator.data["building"]["floors"]
-        opts = self.config_entry.options
-        return self.async_show_form(
-            step_id="init",
-            data_schema=vol.Schema({
-                vol.Required(CONF_HOME_FLOOR, default=opts.get(CONF_HOME_FLOOR, floors[0])): selector.SelectSelector(
-                    selector.SelectSelectorConfig(options=floors, mode=selector.SelectSelectorMode.DROPDOWN)),
-                vol.Optional(CONF_EXTRA_FLOORS, default=opts.get(CONF_EXTRA_FLOORS, [])): selector.SelectSelector(
-                    selector.SelectSelectorConfig(options=floors, multiple=True,
-                                                  mode=selector.SelectSelectorMode.DROPDOWN)),
-            }),
-        )
+            return self.async_create_entry(data={CONF_HOME_FLOOR: user_input[CONF_HOME_FLOOR]})
+        floors = self.config_entry.runtime_data.data["building"]["floors"]
+        default = self.config_entry.options.get(CONF_HOME_FLOOR, floors[0])
+        return self.async_show_form(step_id="init", data_schema=floor_schema(floors, default))

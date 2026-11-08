@@ -19,9 +19,9 @@
  "next.then": "Next after that at {time}",
  "status.synced_ago": "Synced {ago} ({time})",
  "status.never_synced": "Not synced yet",
- "status.audio_live": "Audio: live",
- "status.audio_lost": "Audio lost {ago}",
- "status.audio_connecting": "Audio: connecting",
+ "status.audio_live": "Sensor OK",
+ "status.audio_lost": "Sensor offline ({ago})",
+ "status.audio_connecting": "Sensor: connecting",
  "status.server_down": "Server unreachable",
  "status.server_version": "Server API version {v} is not supported by this page",
  "ago.now": "just now",
@@ -224,5 +224,8 @@
  "month.sivan": "Sivan",
  "month.tammuz": "Tammuz",
  "month.av": "Av",
- "month.elul": "Elul"
+ "month.elul": "Elul",
+ "floor.change": "Change floor",
+ "floor.cancel": "Cancel",
+ "about.made_by": "Made by"
 }

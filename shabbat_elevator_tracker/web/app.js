@@ -35,6 +35,7 @@ const ui = {
   clock: store.get("clock", "24"),
   advanced: store.get("advanced", "0") === "1",
   floor: store.get("floor:" + apiBase),
+  picking: false, // floor picker reopened to change the floor
 };
 
 let tr = null;
@@ -83,9 +84,12 @@ function applyTheme() {
 
 function applyTier() {
   const w = window.innerWidth, h = window.innerHeight;
-  const tier = w < 360 || h < 420 ? "xs" : w >= 900 && h >= 600 ? "lg" : "md";
-  if (document.documentElement.dataset.tier !== tier) {
-    document.documentElement.dataset.tier = tier;
+  const tier = w < 360 || h < 500 ? "xs" : w >= 900 && h >= 600 ? "lg" : "md";
+  const orient = w > h ? "land" : "port";
+  const root = document.documentElement.dataset;
+  if (root.tier !== tier || root.orient !== orient) {
+    root.tier = tier;
+    root.orient = orient;
     render();
   }
 }
@@ -129,11 +133,25 @@ function onRouteSet() {
 
 function setFloor(f) {
   ui.floor = f;
+  ui.picking = false;
   store.set("floor:" + apiBase, f);
   for (const c of document.querySelectorAll(".chip")) c.setAttribute("aria-checked", String(c.dataset.floor === f));
-  $("floor-select").value = f || "";
   shaft.key = "";
   render();
+  if (f) $("btn-floor").focus({ preventScroll: true });
+}
+
+function openPicker(open) {
+  ui.picking = open;
+  render();
+  if (open) document.querySelector('.chip[aria-checked="true"]')?.focus({ preventScroll: true });
+}
+
+/** The building name may be one string or a {lang: name} mapping. */
+function buildingName(b) {
+  const n = b?.name;
+  if (!n || typeof n === "string") return n || "";
+  return n[tr?.lang] || n.en || Object.values(n)[0] || "";
 }
 
 function buildFloors() {
@@ -156,11 +174,6 @@ function buildFloors() {
     b.addEventListener("click", () => setFloor(f));
     chips.appendChild(b);
   }
-  const sel = $("floor-select");
-  sel.textContent = "";
-  sel.add(new Option(t("floor.choose"), ""));
-  for (const f of floors) sel.add(new Option(t("floor.name", { floor: f }), f));
-  sel.value = ui.floor || "";
 }
 
 // ---------------------------------------------------------------- state
@@ -170,8 +183,9 @@ function onState(s) {
     showMessage(t("status.server_version", { v: s.api_version }), "bad");
     return;
   }
-  $("title").textContent = s.building?.name || t("app.title");
-  document.title = (s.building?.name ? s.building.name + " · " : "") + t("app.title");
+  const name = buildingName(s.building);
+  $("title").textContent = name || t("app.title");
+  document.title = (name ? name + " · " : "") + t("app.title");
   $("version").textContent = t("footer.version", { v: s.version || "?" });
   buildFloors();
   renderShabbat();
@@ -207,12 +221,18 @@ function render() {
   const valid = state.prediction.valid && tl.anchor_time_ms != null;
   const pos = valid ? position(tl, floors, tl.anchor_time_ms, now) : null;
 
-  // next arrival
+  // floor picker: big while no floor is chosen (or while changing it), otherwise a title + edit button
   const f = ui.floor;
-  $("next-title").textContent = f ? t("next.title", { floor: f }) : "";
+  const picking = !f || ui.picking;
+  $("floor-picker").hidden = !picking;
+  $("floor-cancel").hidden = !f;
+  $("next").hidden = picking;
+  document.querySelector(".text-panel").classList.toggle("picking", picking);
+  $("btn-floor").hidden = !f;
+  renderNextTitle(f);
   const cd = $("countdown");
   if (!f) {
-    showMessage(t("floor.choose"));
+    showMessage("");
   } else if (!onRouteSet().has(f)) {
     showMessage(t("floor.not_on_route", { floor: f }), "warn");
   } else if (!valid) {
@@ -261,6 +281,22 @@ function render() {
     shaft.update(pos, valid);
   }
   updateDot();
+}
+
+let nextTitleKey = "";
+function renderNextTitle(f) {
+  const key = (f || "") + (tr?.lang || "");
+  if (key === nextTitleKey) return;
+  nextTitleKey = key;
+  const el = $("next-title");
+  el.textContent = "";
+  if (!f) return;
+  // "Next arrival at floor {floor}" with the floor number emphasised
+  const [before, after = ""] = t("next.title").split("{floor}");
+  const num = document.createElement("bdi");
+  num.className = "floor-num";
+  num.textContent = f;
+  el.append(before, num, after);
 }
 
 function updateDot() {
@@ -315,15 +351,15 @@ function renderShabbat() {
   const span = cal.current_span || cal.next_span;
   const grid = document.createElement("div");
   grid.className = "shabbat-grid";
-  const kv = (k, v) => {
-    const e = document.createElement("div"); e.className = "kv";
+  const kv = (k, v, cls = "") => {
+    const e = document.createElement("div"); e.className = "kv " + cls;
     const a = document.createElement("span"); a.className = "k"; a.textContent = k;
     const b = document.createElement("span"); b.className = "v"; b.textContent = v;
     e.append(a, b); grid.appendChild(e);
   };
   if (span) {
-    kv(t("shabbat.candle_lighting"), fmtDayTime(Date.parse(span.start)));
-    kv(t("shabbat.havdalah"), fmtDayTime(Date.parse(span.end)));
+    kv(t("shabbat.candle_lighting"), fmtDayTime(Date.parse(span.start)), "main");
+    kv(t("shabbat.havdalah"), fmtDayTime(Date.parse(span.end)), "main");
   }
   const ids = new Set();
   for (const d of span?.days || []) for (const id of d.ids) ids.add(id);
@@ -336,9 +372,14 @@ function renderShabbat() {
     kv(t("shabbat.title"), names.join(", "));
   }
   const hd = cal.hebrew_date;
-  if (hd) kv("", t("shabbat.hebrew_date", { day: hd.day, month: t("month." + hd.month_id), year: hd.year }));
+  if (hd) {
+    const heb = tr.lang === "he" && hd.day_he; // Hebrew numerals (from hdate) in the Hebrew UI
+    kv("", t("shabbat.hebrew_date", { day: heb ? hd.day_he : hd.day, month: t("month." + hd.month_id),
+                                       year: heb ? hd.year_he : hd.year }), "hdate");
+  }
   box.appendChild(grid);
   const line = document.createElement("p");
+  line.className = "now-line";
   const badge = document.createElement("span");
   badge.className = "badge" + (cal.now?.issur_melacha ? " on" : "");
   badge.textContent = cal.now?.issur_melacha ? t("shabbat.now_on") : t("shabbat.now_off");
@@ -405,7 +446,9 @@ async function renderDebug() {
 
 // ---------------------------------------------------------------- controls
 function setupControls() {
-  $("floor-select").addEventListener("change", (e) => setFloor(e.target.value || null));
+  $("btn-floor").addEventListener("click", () => openPicker(true));
+  $("floor-cancel").addEventListener("click", () => openPicker(false));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ui.picking && ui.floor) openPicker(false); });
   $("btn-theme").addEventListener("click", () => {
     ui.theme = { auto: "light", light: "dark", dark: "auto" }[ui.theme] || "auto";
     store.set("theme", ui.theme);
@@ -456,7 +499,7 @@ function setupControls() {
     const r = await testServer(base);
     if (r.ok) {
       let name = "";
-      try { name = (await (await fetch(base.replace(/\/+$/, "") + "/api/v1/state")).json()).building.name; } catch { /* ignore */ }
+      try { name = buildingName((await (await fetch(base.replace(/\/+$/, "") + "/api/v1/state")).json()).building); } catch { /* ignore */ }
       out.textContent = t("settings.test_ok", { name, version: r.health.version });
     } else out.textContent = r.reason === "mixed_content" ? t("settings.test_mixed") : t("settings.test_fail");
   });

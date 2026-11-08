@@ -7,6 +7,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
 from .coordinator import ElevatorCoordinator
+from .model import building_name
 
 
 class ElevatorEntity(CoordinatorEntity[ElevatorCoordinator]):
@@ -19,7 +20,7 @@ class ElevatorEntity(CoordinatorEntity[ElevatorCoordinator]):
         self._attr_unique_id = f"{iid}_{key}"
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, iid)},
-            name=data["building"]["name"],
+            name=building_name(data["building"], coordinator.hass.config.language),
             manufacturer="Shabbat Elevator Tracker",
             model="Audio-synced Shabbat elevator",
             sw_version=data.get("version"),

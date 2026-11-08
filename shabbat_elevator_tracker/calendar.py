@@ -14,6 +14,8 @@ from dataclasses import dataclass
 from zoneinfo import ZoneInfo
 
 from hdate import HDateInfo, Location, Zmanim
+from hdate.gematria import hebrew_number
+from hdate.translator import context_language
 
 DISPLAY_HOLIDAY_TYPES = {
     "YOM_TOV", "EREV_YOM_TOV", "HOL_HAMOED", "MELACHA_PERMITTED_HOLIDAY", "FAST_DAY",
@@ -106,7 +108,14 @@ class ShabbatCalendar:
 
     def hebrew_date(self, d: dt.date) -> dict:
         h = HDateInfo(d, self.diaspora).hdate
-        return {"day": h.day, "month_id": h.month.name.lower(), "year": h.year}
+        # Hebrew numerals for the Hebrew UI, from hdate (its language setting is context-local)
+        token = context_language.set("he")
+        try:
+            day_he, year_he = hebrew_number(h.day), hebrew_number(h.year % 1000)
+        finally:
+            context_language.reset(token)
+        return {"day": h.day, "month_id": h.month.name.lower(), "year": h.year,
+                "day_he": day_he, "year_he": year_he}
 
     def _hebrew_day(self, t: float) -> dt.date:
         """The Hebrew day starts at sunset: after sunset, report tomorrow's Hebrew date."""

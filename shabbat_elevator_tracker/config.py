@@ -261,6 +261,13 @@ def validate(cfg: Config) -> None:
     errs: list[str] = []
     b, e, a, d = r["building"], r["elevator"], r["anchor"], r["detector"]
 
+    name = b.get("name")
+    if isinstance(name, dict):
+        if not name or not all(isinstance(k, str) and isinstance(v, str) and v for k, v in name.items()):
+            errs.append("building.name must be a string or a {language: name} mapping")
+    elif not isinstance(name, str) or not name:
+        errs.append("building.name must be a string or a {language: name} mapping")
+
     floors = [_norm_floor(f) for f in (b.get("floors") or [])]
     b["floors"] = floors
     if not floors:

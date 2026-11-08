@@ -2,6 +2,7 @@ import datetime as dt
 import json
 import re
 import struct
+import subprocess
 
 from hdate.holidays import HOLIDAYS
 from hdate.parasha import Parasha
@@ -54,9 +55,17 @@ HEBREW = re.compile("[" + chr(0x0590) + "-" + chr(0x05FF) + "]")
 def test_no_hebrew_outside_strings_files(root):
     allowed = {f"{I18N}/he.json"}
     bad = []
-    for p in root.rglob("*"):
+    # files git would commit (tracked or new, not ignored): local configs may hold Hebrew names
+    try:
+        out = subprocess.run(["git", "ls-files", "-co", "--exclude-standard"], cwd=root, check=True,
+                             capture_output=True, text=True).stdout
+        files = [root / line for line in out.splitlines() if line]
+    except (OSError, subprocess.CalledProcessError):
+        files = [p for p in root.rglob("*") if not p.relative_to(root).as_posix().startswith(
+            (".git/", "test-data/", "data/"))]
+    for p in files:
         rel = p.relative_to(root).as_posix()
-        if not p.is_file() or rel.startswith((".git/", "test-data/", "data/")) or "/__pycache__/" in rel:
+        if not p.is_file() or "/__pycache__/" in rel:
             continue
         if rel in allowed or rel.startswith("custom_components/shabbat_elevator_tracker/translations/he"):
             continue
@@ -85,3 +94,9 @@ def test_finalize_repairs_part_file(tmp_path):
     raw = final.read_bytes()
     assert len(raw) == HEADER_BYTES + 2000
     assert struct.unpack("<I", raw[40:44])[0] == 2000
+
+
+def test_ha_readme_dashboard_matches_dev_dashboard(root):
+    tpl = (root / "tools/ha-dev/shabbat-elevator-dashboard.yaml").read_text(encoding="utf-8")
+    readme = (root / "custom_components/shabbat_elevator_tracker/README.md").read_text(encoding="utf-8")
+    assert tpl[tpl.index("title: Shabbat Elevator"):] in readme

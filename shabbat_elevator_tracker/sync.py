@@ -339,8 +339,12 @@ class SyncEngine:
 
     def restore(self, snap: dict, now: float) -> None:
         """Restore after a restart. Expected anchors that passed while down are skipped
-        without counting as misses."""
+        without counting as misses. A snapshot from the future (the clock moved back, or a
+        sped-up dev clock) is ignored apart from the cycle and the reference sound."""
         try:
+            times = [snap.get(k) for k in ("last_anchor", "last_sync_at", "locked_since", "paused_since")]
+            if any(t is not None and float(t) > now + 60 for t in times):
+                snap = {"cycle": snap.get("cycle"), "ref_spectrum": snap.get("ref_spectrum")}
             self.cycle = self._clamp(float(snap.get("cycle") or self.cycle))
             self.last_anchor = snap.get("last_anchor")
             self.last_sync_at = snap.get("last_sync_at")

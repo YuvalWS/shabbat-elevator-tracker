@@ -155,6 +155,16 @@ def test_snapshot_restore_roundtrip():
     assert e2.missed == 0  # expectations that passed while down are not misses
 
 
+def test_restore_ignores_snapshot_from_the_future():
+    e, _ = new_engine()
+    run(e, [(T0, cand(T0)), (T0 + C, cand(T0 + C))], T0 + C + 30)
+    snap = e.snapshot()
+    e2, _ = new_engine()
+    e2.restore(snap, T0 - 3600)
+    assert e2.state != "locked" and e2.last_sync_at is None and e2.last_anchor is None
+    assert e2.ref_spectrum is not None
+
+
 def test_manual_sync():
     e, evs = new_engine()
     e.manual_sync(T0, T0 + 5)

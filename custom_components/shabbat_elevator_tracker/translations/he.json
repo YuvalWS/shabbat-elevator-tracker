@@ -26,10 +26,9 @@
   "options": {
     "step": {
       "init": {
-        "title": "קומות",
+        "title": "הקומה שלך",
         "data": {
-          "home_floor": "קומת הבית",
-          "extra_floors": "קומות נוספות למעקב"
+          "home_floor": "קומת הבית"
         }
       }
     }
@@ -38,9 +37,6 @@
     "sensor": {
       "next_arrival": {
         "name": "הגעה הבאה"
-      },
-      "next_arrival_floor": {
-        "name": "הגעה הבאה לקומה {floor}"
       },
       "last_sync": {
         "name": "סנכרון אחרון"

@@ -26,10 +26,9 @@
   "options": {
     "step": {
       "init": {
-        "title": "Floors",
+        "title": "Your floor",
         "data": {
-          "home_floor": "Home floor",
-          "extra_floors": "Additional floors to track"
+          "home_floor": "Home floor"
         }
       }
     }
@@ -38,9 +37,6 @@
     "sensor": {
       "next_arrival": {
         "name": "Next arrival"
-      },
-      "next_arrival_floor": {
-        "name": "Next arrival floor {floor}"
       },
       "last_sync": {
         "name": "Last sync"

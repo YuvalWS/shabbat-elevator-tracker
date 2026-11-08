@@ -7,6 +7,15 @@ computed locally so they stay correct between pushes.
 from __future__ import annotations
 
 
+def building_name(building: dict, language: str | None) -> str:
+    """The building name is one string or a {language: name} mapping."""
+    name = building.get("name") or ""
+    if isinstance(name, str):
+        return name
+    lang = (language or "en").split("-")[0].lower()
+    return name.get(lang) or name.get("en") or next(iter(name.values()), "")
+
+
 def phase(now_ms: float, anchor_ms: float, cycle_s: float) -> float:
     c = cycle_s * 1000
     return ((now_ms - anchor_ms) % c) / 1000

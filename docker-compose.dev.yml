@@ -6,7 +6,8 @@
 #   docker compose -f docker-compose.dev.yml stop publisher
 #
 # Single-container alternative: the tracker reads the WAVs itself as a loop, sped up 10x
-# (one elevator cycle every ~40 s). Set SET_DEV_CLOCK_SPEED to 1 for real time.
+# (one elevator cycle every ~40 s). LOOP_SPEED=1 (e.g. in a git-ignored .env) runs it in
+# real time, which Home Assistant needs: it shows arrivals against its own real clock.
 #   docker compose -f docker-compose.dev.yml up --build loop     -> http://localhost:8099
 services:
   loop:
@@ -18,11 +19,29 @@ services:
       TZ: Asia/Jerusalem
       SET_AUDIO_SOURCE: loop:/test-data/recordings
       SET_CFG__audio__loop_start: "00:56"
-      SET_DEV_CLOCK_SPEED: "10"
+      SET_DEV_CLOCK_SPEED: ${LOOP_SPEED:-10}
       SET_CFG__server__allow_manual_sync: "true"
     volumes:
-      - ./config.example.yaml:/config/config.yaml:ro
+      # TRACKER_CONFIG in a git-ignored .env picks a local config, e.g. ./config.yaml
+      - ${TRACKER_CONFIG:-./config.example.yaml}:/config/config.yaml:ro
       - ./test-data:/test-data:ro
+
+  # Home Assistant with this integration, against the loop tracker above (with LOOP_SPEED=1):
+  #   docker compose -f docker-compose.dev.yml up -d --build loop homeassistant
+  #   python tools/ha-dev/setup.py            -> http://localhost:8123/shabbat-elevator
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    profiles: [ha]
+    depends_on: [loop]
+    ports:
+      - "127.0.0.1:8123:8123"   # this machine only: the dev login needs no password
+    environment:
+      TZ: Asia/Jerusalem
+    volumes:
+      - ha-config:/config
+      - ./tools/ha-dev/configuration.yaml:/config/configuration.yaml:ro
+      - ./custom_components:/config/custom_components:ro
+      - ./data/ha-dev/dashboards:/config/dashboards:ro
 
   mediamtx:
     image: bluenviron/mediamtx:1.9.3
@@ -62,3 +81,6 @@ services:
       SET_CFG__server__allow_manual_sync: "true"
     volumes:
       - ./config.example.yaml:/config/config.yaml:ro
+
+volumes:
+  ha-config:
