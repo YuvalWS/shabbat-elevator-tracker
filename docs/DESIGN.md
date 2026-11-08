@@ -1,8 +1,8 @@
 # Shabbat Elevator Tracker — Design Document
 
-Status: **rev 5** (2026-11-08): implemented as v0.1. Rev 3 added the hdate calendar,
+Status: **rev 6** (2026-11-08): implemented as v0.1. Rev 3 added the hdate calendar,
 GPL-3.0-or-later, authenticated audio sources and the Givat Shmuel location; rev 4 records
-what changed during implementation (section 23); rev 5 adds the one-time floor picker,
+what changed during implementation (section 23); rev 6 adds the quick lock and the listening messages (23.2); rev 5 adds the one-time floor picker,
 the short-landscape layout, Hebrew numerals, per-language building names and a local Home
 Assistant for development (23.1).
 
@@ -390,13 +390,26 @@ States: `idle`, `searching`, `provisional`, `locked`, `paused`.
 - **provisional**: has pending candidates (keep ≤ 20). A new candidate at `k·C ± gate`
   (k = 1…3) from any pending one locks to the **newer** of the pair. Pending older than
   `3·C + gate` is dropped; none left → back to searching/idle.
+- **Quick lock** (`sync.quick_lock`, default `shabbat`): when the reference sound has been
+  learned (section 9.3, kept across restarts), a single candidate that lasts at least
+  `quick_lock_min_seconds` (5 s) and matches the reference with similarity ≥
+  `quick_lock_min_similarity` (0.95) locks at once, inside the Shabbat window only
+  (`always` also outside it; `off` disables it). The lock is **unconfirmed**
+  (`sync.confirmed: false`, `prediction.degraded: "unconfirmed"`) until the next stop is
+  heard on time; if that stop is missed the lock is dropped and the previous sync time is
+  restored. First lock goes from 7–14 min to 0–7 min, and after the night pause the
+  replay re-locks 7 min sooner. Timing accuracy is unchanged (every prediction comes from
+  one anchor anyway); the only risk is a false lock, which lasts one cycle at most and is
+  labelled. On the recorded night no other sound passed the filter (other sounds were
+  ≈ 2 s long and matched ≤ 0.81; real stops last 6–8 s and match 0.99).
 - **locked**: `expected = last_anchor + n·C`. Candidate within `±gate` → **sync**
   (`last_anchor` updated, `missed = 0`, adaptive cycle updated). Others → `unmatched`
   (logged only). `expected + gate` passes with no sync and stream `connected` →
   `missed += 1` (not counted while the stream is lost). `missed ≥ pause_after_missed` →
   **paused**.
 - **paused**: prediction invalid (`reason: "elevator_paused"`). Re-lock needs a
-  confirmed pair, because the phase after a pause is arbitrary (94 s shift observed).
+  confirmed pair or a quick lock, because the phase after a pause is arbitrary (94 s
+  shift observed).
 - **Adaptive cycle**: on a sync `n` cycles (n ≤ 3) after the previous one,
   `C ← 0.8·C + 0.2·(interval/n)`, clamped to `cycle_seconds × (1 ± max_deviation%)`.
 - Stream lost: state kept; predictions stay valid until stale and are flagged
@@ -984,3 +997,14 @@ Changes made while implementing, with the reason:
 - **Plainer status wording**: "Sensor OK" / "Sensor offline" (Hebrew: "sensor OK")
   instead of "Audio: live"; the picker asks for *your* floor.
 
+### 23.2 Rev 6 (2026-11-08)
+
+- **Quick lock** (9.4): predictions from the first stop that sounds like the learned
+  one, labelled until the next stop confirms it. The dev loop sets `quick_lock: always`
+  because the recordings are from Shabbat but the clock usually isn't. YAML reads a bare
+  `off` as `false`, so `false`/`true` are accepted as `off`/`shabbat`.
+- **Listening messages** instead of "waiting for the first sync": the web client says it is
+  listening and that the first prediction takes a few minutes, "heard once, confirming"
+  while provisional or unconfirmed, and "listening for it to start again" while paused.
+  The HA dashboard's note follows the sync state the same way instead of always saying
+  "not running".

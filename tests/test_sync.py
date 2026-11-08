@@ -169,3 +169,53 @@ def test_manual_sync():
     e, evs = new_engine()
     e.manual_sync(T0, T0 + 5)
     assert e.state == "locked" and e.source == "manual"
+
+
+IN_WINDOW = lambda t: True  # noqa: E731
+NOISE = np.linspace(30, 1, 80).astype(np.float32)
+
+
+def learned_engine(**kw):
+    """An engine that already knows the anchor sound (as after a restart), not locked."""
+    e, evs = new_engine(**kw)
+    e._learn(SPEC)
+    return e, evs
+
+
+def test_quick_lock_from_one_stop_in_the_window():
+    e, evs = learned_engine()
+    run(e, [(T0, cand(T0))], T0 + 30, window=IN_WINDOW)
+    assert e.state == "locked" and e.confirmed is False
+    assert e.last_anchor == pytest.approx(T0)
+    assert e.prediction_status(T0 + 30) == (True, None)
+    run(e, [(T0 + C, cand(T0 + C))], T0 + C + 30, window=IN_WINDOW)
+    assert e.confirmed is True and e.syncs_total == 2
+
+
+def test_quick_lock_dropped_when_next_stop_missing():
+    e, evs = learned_engine()
+    run(e, [(T0, cand(T0))], T0 + C + 60, window=IN_WINDOW)
+    assert e.state == "provisional" and not e.locked  # kept as a pending candidate
+    assert e.last_sync_at is None and e.syncs_total == 0
+    assert "unlock" in [x["type"] for x in evs]
+
+
+def test_quick_lock_needs_learned_sound_length_and_window():
+    # no learned sound yet (first install): needs a pair
+    e, _ = new_engine()
+    run(e, [(T0, cand(T0))], T0 + 30, window=IN_WINDOW)
+    assert not e.locked
+    # a different sound, or a short one
+    e, _ = learned_engine()
+    run(e, [(T0, cand(T0, spectrum=NOISE)), (T0 + 50, cand(T0 + 50, dur=2.5))], T0 + 80, window=IN_WINDOW)
+    assert not e.locked
+    # outside the Shabbat window only "always" allows it
+    e, _ = learned_engine()
+    run(e, [(T0, cand(T0))], T0 + 30, window=lambda t: False)
+    assert not e.locked
+    e, _ = learned_engine(quick_lock="always")
+    run(e, [(T0, cand(T0))], T0 + 30, window=lambda t: False)
+    assert e.locked
+    e, _ = learned_engine(quick_lock="off")
+    run(e, [(T0, cand(T0))], T0 + 30, window=IN_WINDOW)
+    assert not e.locked

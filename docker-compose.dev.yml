@@ -19,6 +19,7 @@ services:
       TZ: Asia/Jerusalem
       SET_AUDIO_SOURCE: loop:/test-data/recordings
       SET_CFG__audio__loop_start: "00:56"
+      SET_CFG__sync__quick_lock: always    # the recordings are Shabbat, the clock usually isn't
       SET_DEV_CLOCK_SPEED: ${LOOP_SPEED:-10}
       SET_CFG__server__allow_manual_sync: "true"
     volumes:

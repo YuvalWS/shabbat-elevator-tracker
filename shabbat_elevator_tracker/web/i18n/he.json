@@ -29,12 +29,12 @@
  "ago.minutes": "לפני {n} דק׳",
  "ago.hours": "לפני {n} שע׳",
  "ago.days": "לפני {n} ימים",
- "reason.no_sync": "ממתין לסנכרון ראשון",
- "reason.elevator_paused": "נראה שהמעלית בהפסקה",
+ "reason.no_sync": "מאזין למעלית. התחזית הראשונה מגיעה בדרך כלל תוך כמה דקות.",
+ "reason.elevator_paused": "נראה שהמעלית עצרה. מאזין עד שתחזור לפעול.",
  "reason.stale": "הסנכרון האחרון ישן מדי",
  "reason.outside_shabbat": "מחוץ לשבת — צפויה החל מ-{time}",
  "reason.outside_shabbat_plain": "מחוץ לשבת",
- "reason.provisional": "המעלית נשמעה פעם אחת — מאמת בסיבוב הבא",
+ "reason.provisional": "המעלית נשמעה פעם אחת. מאמת בסיבוב הבא (כ-7 דקות).",
  "degraded.audio_lost": "השמע אבד — החיזוי ממשיך מהסנכרון האחרון",
  "state.idle": "לא פעיל",
  "state.searching": "מאזין",
@@ -227,5 +227,6 @@
  "month.elul": "אלול",
  "floor.change": "החלפת קומה",
  "floor.cancel": "ביטול",
- "about.made_by": "פותח על ידי"
+ "about.made_by": "פותח על ידי",
+ "degraded.unconfirmed": "המעלית נשמעה פעם אחת. מאמת בסיבוב הבא."
 }

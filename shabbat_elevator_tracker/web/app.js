@@ -252,7 +252,7 @@ function render() {
       const after = nextArrival(tl, tl.anchor_time_ms, f, n.depart_at + 1);
       $("next-then").textContent = after ? t("next.then", { time: fmtTime(after.arrive_at) }) : "";
     }
-    if (state.prediction.degraded === "audio_lost") $("next-then").textContent = t("degraded.audio_lost");
+    if (state.prediction.degraded) $("next-then").textContent = t("degraded." + state.prediction.degraded);
   }
 
   // status line
@@ -303,7 +303,7 @@ function updateDot() {
   const d = $("dot");
   let cls = "bad";
   if (transport !== "down" && state) {
-    cls = state.stream.state === "connected" && state.sync.state === "locked" ? "ok" : "warn";
+    cls = state.stream.state === "connected" && state.sync.state === "locked" && state.sync.confirmed !== false ? "ok" : "warn";
   }
   d.className = "dot " + cls;
   d.title = t("transport." + transport);

@@ -63,6 +63,8 @@ sync:
   confirm_min_similarity: 0.90   # ... and sound alike
   confirm_max_duration_ratio: 1.6
   confirm_window_cycles: 3
+  quick_lock: shabbat            # predict from one stop that sounds like the learned one,
+                                 # confirmed on the next round: shabbat (in the window), always, off
   pause_after_missed: 3          # missed stops before "paused"
   stale_after_seconds: 7200
 

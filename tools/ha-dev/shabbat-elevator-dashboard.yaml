@@ -30,8 +30,15 @@ views:
                 format: time
           - type: markdown
             content: >-
-              **The Shabbat elevator is not running now.**
-              Predictions start once it runs and the tracker has synced.
+              {% set s = states('sensor.example_building_sync_state') %}
+              {% if s == 'searching' %}**Listening for the elevator.**
+              The first prediction usually takes a few minutes.
+              {% elif s == 'provisional' %}**Heard the elevator once.**
+              Confirming on the next round (about 7 minutes).
+              {% elif s == 'paused' %}**The elevator seems to have stopped.**
+              Listening for it to start again.
+              {% else %}**The Shabbat elevator is not running now.**
+              Predictions start once it runs and the tracker has synced.{% endif %}
             visibility:
               - condition: state
                 entity: binary_sensor.example_building_elevator_running

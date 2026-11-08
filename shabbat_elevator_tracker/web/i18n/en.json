@@ -29,12 +29,12 @@
  "ago.minutes": "{n} min ago",
  "ago.hours": "{n} h ago",
  "ago.days": "{n} d ago",
- "reason.no_sync": "Waiting for the first sync",
- "reason.elevator_paused": "The elevator appears paused",
+ "reason.no_sync": "Listening for the elevator. The first prediction usually takes a few minutes.",
+ "reason.elevator_paused": "The elevator seems to have stopped. Listening for it to start again.",
  "reason.stale": "Last sync is too old",
  "reason.outside_shabbat": "Outside Shabbat — expected from {time}",
  "reason.outside_shabbat_plain": "Outside Shabbat",
- "reason.provisional": "Heard the elevator once — confirming on the next round",
+ "reason.provisional": "Heard the elevator once. Confirming on the next round (about 7 minutes).",
  "degraded.audio_lost": "Audio lost — predicting from the last sync",
  "state.idle": "Idle",
  "state.searching": "Listening",
@@ -227,5 +227,6 @@
  "month.elul": "Elul",
  "floor.change": "Change floor",
  "floor.cancel": "Cancel",
- "about.made_by": "Made by"
+ "about.made_by": "Made by",
+ "degraded.unconfirmed": "Heard the elevator once. Confirming on the next round."
 }

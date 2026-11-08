@@ -95,3 +95,13 @@ def test_public_config_hides_source_and_location():
     text = str(pub)
     assert "rtsp" not in text and "pw" not in text
     assert "latitude" not in pub["calendar"]
+
+
+def test_quick_lock_values():
+    from shabbat_elevator_tracker.config import ConfigError, load_config
+
+    assert load_config(None).sync["quick_lock"] == "shabbat"
+    assert load_config(None, env={"SET_CFG__sync__quick_lock": "off"}).sync["quick_lock"] == "off"
+    assert load_config(None, env={"SET_CFG__sync__quick_lock": "always"}).sync["quick_lock"] == "always"
+    with pytest.raises(ConfigError):
+        load_config(None, env={"SET_CFG__sync__quick_lock": "sometimes"})

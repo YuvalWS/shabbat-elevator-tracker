@@ -50,7 +50,9 @@ needs to push when something changes.
   (one candidate heard, waiting for confirmation), `locked`, `paused` (expected stops
   missed: the elevator stopped).
 - `prediction.reason` when not valid: `no_sync`, `elevator_paused`, `stale`, `outside_shabbat`.
-- `prediction.degraded`: `audio_lost` while the stream is down but the last sync is fresh.
+- `prediction.degraded`: `audio_lost` while the stream is down but the last sync is fresh;
+  `unconfirmed` after a quick lock from a single stop, until the next stop is heard on time.
+- `sync.confirmed`: `false` during that unconfirmed quick lock, `null` when not locked.
 - Timeline offsets are seconds after the anchor floor's arrival; floor `t` arrival times
   repeat every `cycle_seconds` from `anchor_time_ms`.
 - `calendar.*_ids` are ids (parsha, holiday, month); clients translate them.

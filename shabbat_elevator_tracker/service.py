@@ -52,6 +52,10 @@ class Service:
         self.version = 0
         snap = self.store.load_state()
         if snap:
+            if str(cfg.audio.get("source") or "").startswith("loop:"):
+                # a loop restarts at loop_start, so the saved phase means nothing: keep only
+                # what was learned about the elevator
+                snap = {"cycle": snap.get("cycle"), "ref_spectrum": snap.get("ref_spectrum")}
             self.sync.restore(snap, self.clock.now())
 
     # ------------------------------------------------------------ callbacks
@@ -184,6 +188,8 @@ class Service:
         degraded = None
         if valid and self.ingest.status.state != "connected":
             degraded = "audio_lost"
+        elif valid and not self.sync.confirmed:
+            degraded = "unconfirmed"
         anchor = self.sync.last_anchor
         pred: dict = {"valid": valid, "reason": reason, "degraded": degraded, "position": None,
                       "next_arrivals": None}
@@ -203,6 +209,7 @@ class Service:
             "last_sync_at_ms": ms(self.sync.last_sync_at),
             "anchor_floor": self.cfg.anchor["floor"],
             "missed": self.sync.missed,
+            "confirmed": self.sync.confirmed if self.sync.locked else None,
             "source": self.sync.source,
             "paused_since": iso(self.sync.paused_since),
         }

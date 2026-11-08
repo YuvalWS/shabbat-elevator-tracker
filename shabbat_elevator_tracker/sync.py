@@ -4,7 +4,9 @@ States: idle, searching, provisional, locked, paused.
 
 A candidate (loud event at the anchor floor) is trusted only if it falls on the expected
 phase of an existing lock, or if two candidates confirm each other one to three cycles
-apart. All times are epoch seconds from the service clock.
+apart. A quick lock trusts a single candidate that sounds like the learned anchor sound
+and lasts as long as one; it is *unconfirmed* until the next stop is heard on time, and
+is dropped if that stop is missed. All times are epoch seconds from the service clock.
 """
 
 from __future__ import annotations
@@ -40,6 +42,9 @@ class SyncParams:
     max_deviation_percent: float = 2.0
     offset_seconds: float = 0.0
     report_delay_seconds: float = 32.0  # latest a candidate with onset in the gate can arrive
+    quick_lock: str = "shabbat"  # trust one stop: "shabbat" (in the window only), "always", "off"
+    quick_lock_min_similarity: float = 0.95
+    quick_lock_min_seconds: float = 5.0
 
     @classmethod
     def from_config(cls, cfg) -> SyncParams:
@@ -58,6 +63,9 @@ class SyncParams:
             max_deviation_percent=float(e["adaptive_cycle"]["max_deviation_percent"]),
             offset_seconds=float(cfg.anchor.get("offset_seconds", 0.0)),
             report_delay_seconds=float(cfg.detector["max_event_seconds"]) + 2.0,
+            quick_lock=str(s.get("quick_lock", "shabbat")),
+            quick_lock_min_similarity=float(s.get("quick_lock_min_similarity", 0.95)),
+            quick_lock_min_seconds=float(s.get("quick_lock_min_seconds", 5.0)),
         )
 
 
@@ -67,6 +75,8 @@ class SyncEngine:
         self.on_event = on_event
         self.cycle = params.cycle_seconds
         self.locked = False
+        self.confirmed = True  # False after a quick lock, until the next stop is heard
+        self._before_quick: tuple | None = None  # (last_anchor, last_sync_at, source) to undo it
         self.paused = False
         self.paused_since: float | None = None
         self.last_anchor: float | None = None
@@ -124,6 +134,8 @@ class SyncEngine:
     def _lock(self, anchor: float, now: float, source: str, kind: str, **extra) -> None:
         was_locked = self.locked
         self.locked = True
+        self.confirmed = True
+        self._before_quick = None
         self.paused = False
         self.paused_since = None
         self.last_anchor = anchor
@@ -230,6 +242,14 @@ class SyncEngine:
                 self._adapt(t - older, k2)
                 self._lock(t, now, "audio", "lock")
                 verdict = "lock"
+            elif self._quick_ok(cand):
+                before = (self.last_anchor, self.last_sync_at, self.source)
+                self._lock(t, now, "audio", "lock", confirmed=False)
+                self.confirmed = False
+                self._before_quick = before
+                # keep it pending too, so a later pair can still lock if this one is dropped
+                self.pending.append(_Pending(t, cand.duration, cand.spectrum))
+                verdict = "quick_lock"
             else:
                 self.pending.append(_Pending(t, cand.duration, cand.spectrum))
                 verdict = "pending"
@@ -242,6 +262,16 @@ class SyncEngine:
         self._prune(now)
         self._set_state(now)
         return verdict
+
+    def _quick_ok(self, cand: Candidate) -> bool:
+        """A single candidate may lock: it sounds like the learned anchor and is as long as one."""
+        mode = self.p.quick_lock
+        if mode == "off" or (mode != "always" and self.in_window is not True):
+            return False
+        if cand.duration < self.p.quick_lock_min_seconds or self.ref_spectrum is None:
+            return False
+        sim = similarity(cand.spectrum, self.ref_spectrum)
+        return sim is not None and sim >= self.p.quick_lock_min_similarity
 
     def manual_sync(self, anchor_time: float, now: float) -> None:
         self._now = now
@@ -260,6 +290,17 @@ class SyncEngine:
                 if not self._stream_gap:
                     self.missed += 1
                     self._emit("miss", now, expected=exp, missed=self.missed)
+                if not self.confirmed and self.missed >= 1:
+                    # an unconfirmed quick lock whose next stop didn't come: it was not the elevator
+                    self.locked = False
+                    self.confirmed = True
+                    if self._before_quick:
+                        self.last_anchor, self.last_sync_at, self.source = self._before_quick
+                    self._before_quick = None
+                    self.syncs_total -= 1
+                    self.missed = 0
+                    self._emit("unlock", now, reason="unconfirmed", expected=exp)
+                    break
                 self._stream_gap = not stream_ok
                 if self.missed >= self.p.pause_after_missed:
                     self.locked = False
@@ -323,6 +364,7 @@ class SyncEngine:
         return {
             "state": self.state,
             "locked": self.locked,
+            "confirmed": self.confirmed,
             "paused": self.paused,
             "paused_since": self.paused_since,
             "last_anchor": self.last_anchor,
@@ -354,6 +396,7 @@ class SyncEngine:
                 self._learn(snap["ref_spectrum"])
             if snap.get("locked") and self.last_anchor is not None and not self.is_stale(now):
                 self.locked = True
+                self.confirmed = bool(snap.get("confirmed", True))
                 self.locked_since = snap.get("locked_since")
                 self.missed = int(snap.get("missed") or 0)
                 late = now - self.last_anchor - self.p.gate_seconds - self.p.report_delay_seconds

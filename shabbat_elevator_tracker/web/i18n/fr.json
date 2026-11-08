@@ -29,12 +29,12 @@
  "ago.minutes": "il y a {n} min",
  "ago.hours": "il y a {n} h",
  "ago.days": "il y a {n} j",
- "reason.no_sync": "En attente de la première synchronisation",
- "reason.elevator_paused": "L'ascenseur semble à l'arrêt",
+ "reason.no_sync": "À l'écoute de l'ascenseur. La première prévision arrive en général en quelques minutes.",
+ "reason.elevator_paused": "L'ascenseur semble arrêté. À l'écoute de sa reprise.",
  "reason.stale": "Dernière synchronisation trop ancienne",
  "reason.outside_shabbat": "Hors Chabbat — prévu à partir de {time}",
  "reason.outside_shabbat_plain": "Hors Chabbat",
- "reason.provisional": "Ascenseur entendu une fois — confirmation au prochain tour",
+ "reason.provisional": "Ascenseur entendu une fois. Confirmation au prochain tour (environ 7 minutes).",
  "degraded.audio_lost": "Audio perdu — prévision depuis la dernière synchronisation",
  "state.idle": "Inactif",
  "state.searching": "À l'écoute",
@@ -227,5 +227,6 @@
  "month.elul": "Eloul",
  "floor.change": "Changer d'étage",
  "floor.cancel": "Annuler",
- "about.made_by": "Réalisé par"
+ "about.made_by": "Réalisé par",
+ "degraded.unconfirmed": "Ascenseur entendu une fois. Confirmation au prochain tour."
 }

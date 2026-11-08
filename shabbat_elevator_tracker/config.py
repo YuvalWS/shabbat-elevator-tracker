@@ -56,6 +56,9 @@ DEFAULTS: dict[str, Any] = {
         "confirm_max_duration_ratio": 1.6,
         "sync_min_similarity": 0.80,
         "confirm_window_cycles": 3,
+        "quick_lock": "shabbat",
+        "quick_lock_min_similarity": 0.95,
+        "quick_lock_min_seconds": 5.0,
         "pause_after_missed": 3,
         "stale_after_seconds": 7200.0,
     },
@@ -355,6 +358,11 @@ def validate(cfg: Config) -> None:
 
     if r["audio"].get("loop_start") and not re.fullmatch(r"\d{1,2}:\d{2}", str(r["audio"]["loop_start"])):
         errs.append("audio.loop_start must look like HH:MM")
+    ql = r["sync"].get("quick_lock", "shabbat")
+    if isinstance(ql, bool):  # YAML reads a bare off/on as a boolean
+        r["sync"]["quick_lock"] = "shabbat" if ql else "off"
+    elif str(ql) not in ("shabbat", "always", "off"):
+        errs.append("sync.quick_lock must be shabbat, always or off")
 
     if errs:
         raise ConfigError("invalid configuration:\n  - " + "\n  - ".join(errs))
