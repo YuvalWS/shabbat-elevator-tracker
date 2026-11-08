@@ -36,7 +36,6 @@ building called "Example building":
 | `binary_sensor.example_building_audio_stream` | The tracker receives audio. |
 | `binary_sensor.example_building_elevator_running` | On while synced to a running elevator. |
 | `binary_sensor.example_building_shabbat_elevator_window` | On inside the expected elevator window (candle lighting − padding … havdalah + padding). |
-| `binary_sensor.example_building_issur_melacha` | On from candle lighting to havdalah. |
 
 Event `shabbat_elevator_tracker_sync` fires on each sync, with `anchor_time` and
 `cycle_seconds`.
@@ -109,10 +108,6 @@ views:
           - type: heading
             heading: Shabbat
             icon: mdi:candle
-          - type: tile
-            entity: binary_sensor.example_building_issur_melacha
-            name: Issur melacha
-            grid_options: {columns: 6}
           - type: tile
             entity: binary_sensor.example_building_shabbat_elevator_window
             name: Elevator window

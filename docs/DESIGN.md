@@ -1024,3 +1024,11 @@ Changes made while implementing, with the reason:
   the health check within 30 s is switched back and deleted, and `update --rollback` goes
   back by hand. Two releases are kept (about 120 MB each), hence the 3 GB default disk.
   The repository is public so the one-liner, `update` and HACS can fetch it.
+- **HA integration 0.1.1:** the issur melacha binary sensor is removed (the HA calendar
+  integrations already cover it); setup deletes the old registry entry. The web favicon is
+  the integration's icon, shipped in `custom_components/…/brand/` (HA 2026.3+ reads local
+  brand images; older versions show no icon).
+- **Web files are sent with `Cache-Control: no-cache`** (the API already had `no-store`):
+  behind a CDN such as Cloudflare, `.js`/`.css` without a header are cached at the edge
+  for hours, so after an update the page could pair new HTML with old scripts. Clients
+  still get 304s, so the cost is one small request per file.

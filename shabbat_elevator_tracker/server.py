@@ -58,9 +58,22 @@ def web_root(cfg) -> Path | None:
     return Path(str(resources.files("shabbat_elevator_tracker") / "web"))
 
 
+@web.middleware
+async def _revalidate_static(request: web.Request, handler):
+    """Web files: caches (browsers, Cloudflare) must check with us before reusing a copy.
+
+    Without a Cache-Control header a CDN may keep app.js for hours, so after an update
+    the page would mix new HTML with old scripts. no-cache still allows 304 replies.
+    """
+    resp = await handler(request)
+    if not request.path.startswith("/api/") and "Cache-Control" not in resp.headers:
+        resp.headers["Cache-Control"] = "no-cache"
+    return resp
+
+
 def create_app(service: Service) -> web.Application:
     cfg = service.cfg
-    app = web.Application(middlewares=[_cors_middleware(list(cfg.server["cors_origins"]))])
+    app = web.Application(middlewares=[_cors_middleware(list(cfg.server["cors_origins"])), _revalidate_static])
     app[SERVICE_KEY] = service
     r = app.router
     r.add_get("/api/v1/state", h_state)

@@ -122,6 +122,10 @@ async def test_web_client_served(client):
     assert r.status == 200
     r = await client.get("/model.js")
     assert r.status == 200
+    # web files must be revalidated, so a CDN never serves old scripts after an update
+    assert r.headers["Cache-Control"] == "no-cache"
+    r2 = await client.get("/model.js", headers={"If-Modified-Since": r.headers["Last-Modified"]})
+    assert r2.status == 304
 
 
 async def test_sse_pushes_state_on_sync(client):

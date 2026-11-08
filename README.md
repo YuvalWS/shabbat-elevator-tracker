@@ -104,7 +104,7 @@ the folder), then *Settings → Devices & services → Add integration → Shabb
 Tracker* and enter the server URL. It uses push (SSE) and falls back to polling.
 
 Entities: next arrival at your floor (chosen in the setup form, changed under
-*Configure*), last sync, sync state, cycle length, audio stream, elevator running, Shabbat window, issur melacha, car
+*Configure*), last sync, sync state, cycle length, audio stream, elevator running, Shabbat window, car
 position. The [integration README](custom_components/shabbat_elevator_tracker/README.md)
 has the entity list, a ready dashboard, an automation example, and a local Home
 Assistant in Docker to try it.

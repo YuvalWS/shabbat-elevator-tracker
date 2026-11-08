@@ -75,6 +75,15 @@ async def test_config_flow_already_configured(hass: HomeAssistant, aioclient_moc
     assert r["type"] is FlowResultType.ABORT and r["reason"] == "already_configured"
 
 
+async def test_removed_entity_is_cleaned_up(hass: HomeAssistant, aioclient_mock):
+    """An issur melacha sensor left by 0.1.0 is removed from the registry on setup."""
+    ent = er.async_get(hass)
+    old = ent.async_get_or_create("binary_sensor", DOMAIN, f"{IID}_issur_melacha")
+    await setup_entry(hass, aioclient_mock)
+    assert ent.async_get(old.entity_id) is None
+    assert ent.async_get_entity_id("binary_sensor", DOMAIN, f"{IID}_shabbat_window") is not None
+
+
 async def test_entities_when_locked(hass: HomeAssistant, aioclient_mock):
     entry = await setup_entry(hass, aioclient_mock)
     ent = er.async_get(hass)
@@ -85,7 +94,7 @@ async def test_entities_when_locked(hass: HomeAssistant, aioclient_mock):
     assert hass.states.get(ent.async_get_entity_id("sensor", DOMAIN, f"{IID}_sync_state")).state == "locked"
     assert hass.states.get(ent.async_get_entity_id("binary_sensor", DOMAIN, f"{IID}_running")).state == "on"
     assert hass.states.get(ent.async_get_entity_id("binary_sensor", DOMAIN, f"{IID}_audio_stream")).state == "on"
-    assert hass.states.get(ent.async_get_entity_id("binary_sensor", DOMAIN, f"{IID}_issur_melacha")).state == "on"
+    assert ent.async_get_entity_id("binary_sensor", DOMAIN, f"{IID}_issur_melacha") is None
     cyc = hass.states.get(ent.async_get_entity_id("sensor", DOMAIN, f"{IID}_cycle_length"))
     assert float(cyc.state) == pytest.approx(LOCKED["cycle"]["seconds"])
     # one next-arrival sensor, for your floor

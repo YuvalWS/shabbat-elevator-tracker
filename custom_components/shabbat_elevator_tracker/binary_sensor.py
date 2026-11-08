@@ -1,20 +1,33 @@
-"""Binary sensors: audio stream, running, Shabbat window, issur melacha."""
+"""Binary sensors: audio stream, running, Shabbat window."""
 
 from __future__ import annotations
 
 from homeassistant.components.binary_sensor import BinarySensorDeviceClass, BinarySensorEntity
 from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import ElevatorConfigEntry
+from .const import DOMAIN
 from .entity import ElevatorEntity
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ElevatorConfigEntry,
                             async_add_entities: AddConfigEntryEntitiesCallback) -> None:
     c = entry.runtime_data
-    async_add_entities([AudioStreamSensor(c), RunningSensor(c), ShabbatWindowSensor(c), IssurMelachaSensor(c)])
+    _remove_old_entities(hass, c)
+    async_add_entities([AudioStreamSensor(c), RunningSensor(c), ShabbatWindowSensor(c)])
+
+
+def _remove_old_entities(hass: HomeAssistant, coordinator) -> None:
+    """Drop entities earlier versions created, so they don't linger as 'not provided'."""
+    reg = er.async_get(hass)
+    iid = coordinator.data["instance_id"]
+    for key in ("issur_melacha",):  # removed in 0.1.1: the calendar integrations cover it
+        entity_id = reg.async_get_entity_id("binary_sensor", DOMAIN, f"{iid}_{key}")
+        if entity_id:
+            reg.async_remove(entity_id)
 
 
 class AudioStreamSensor(ElevatorEntity, BinarySensorEntity):
@@ -65,13 +78,3 @@ class ShabbatWindowSensor(_CalendarSensor):
         return {"window_start": span.get("window_start"), "window_end": span.get("window_end"),
                 "candle_lighting": span.get("start"), "havdalah": span.get("end")}
 
-
-class IssurMelachaSensor(_CalendarSensor):
-    _attr_translation_key = "issur_melacha"
-
-    def __init__(self, coordinator) -> None:
-        super().__init__(coordinator, "issur_melacha")
-
-    @property
-    def is_on(self) -> bool:
-        return bool(self.state_data["calendar"]["now"]["issur_melacha"])

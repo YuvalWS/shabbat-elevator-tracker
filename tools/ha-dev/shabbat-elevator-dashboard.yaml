@@ -58,10 +58,6 @@ views:
             heading: Shabbat
             icon: mdi:candle
           - type: tile
-            entity: binary_sensor.example_building_issur_melacha
-            name: Issur melacha
-            grid_options: {columns: 6}
-          - type: tile
             entity: binary_sensor.example_building_shabbat_elevator_window
             name: Elevator window
             grid_options: {columns: 6}
