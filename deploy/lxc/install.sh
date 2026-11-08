@@ -42,7 +42,7 @@ done
 export DEBIAN_FRONTEND=noninteractive
 
 # ------------------------------------------------------------------ helpers
-current() { readlink -f "$PREFIX/current" 2>/dev/null || true; }
+current() { readlink -e "$PREFIX/current" 2>/dev/null || true; }
 
 # the newest release that sorts before $1 (release names start with a timestamp)
 previous_of() {
@@ -205,7 +205,8 @@ EOF
 install -m 0644 "$WORK/src/config.example.yaml" "$CONF_DIR/config.example.yaml"
 install -m 0755 "$WORK/src/deploy/lxc/install.sh" "$PREFIX/install.sh"
 install -m 0755 "$WORK/src/deploy/lxc/update.sh" "$PREFIX/update.sh"
-ln -sfn "$PREFIX/update.sh" /usr/local/bin/update
+ln -sfn "$PREFIX/update.sh" /usr/bin/update   # /usr/bin: `pct exec` with a cleared environment searches only /bin:/usr/bin
+[ "$(readlink /usr/local/bin/update 2>/dev/null)" = "$PREFIX/update.sh" ] && rm -f /usr/local/bin/update
 install -m 0644 "$WORK/src/deploy/lxc/motd.sh" /etc/profile.d/$APP.sh
 
 echo "==> configuration"

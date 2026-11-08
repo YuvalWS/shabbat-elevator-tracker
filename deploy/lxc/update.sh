@@ -31,7 +31,7 @@ done
 
 [ "$(id -u)" -eq 0 ] || { echo "run as root" >&2; exit 1; }
 
-CUR=$(readlink -f "$PREFIX/current" 2>/dev/null || true)
+CUR=$(readlink -e "$PREFIX/current" 2>/dev/null || true)
 field() { sed -n "s/^$1=//p" "$CUR/SOURCE" 2>/dev/null | head -1; }
 INSTALLED=$(field commit)
 
