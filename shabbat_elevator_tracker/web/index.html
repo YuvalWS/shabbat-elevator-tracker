@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1d2433">
+<title>Shabbat Elevator</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <span class="dot" id="dot" aria-hidden="true"></span>
+    <h1 class="title" id="title" data-i18n="app.title">Shabbat Elevator</h1>
+    <div class="top-actions">
+      <button class="icon-btn" id="btn-lang" type="button" aria-haspopup="menu">EN</button>
+      <button class="icon-btn" id="btn-theme" type="button" data-i18n-title="header.theme" aria-label="Theme">◐</button>
+      <button class="icon-btn" id="btn-settings" type="button" data-i18n-title="header.settings" aria-label="Settings">⚙</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="panel text-panel">
+      <div class="floor-picker">
+        <label for="floor-select" class="floor-label" data-i18n="floor.label">My floor</label>
+        <select id="floor-select" class="floor-select"></select>
+        <div class="floor-chips" id="floor-chips" role="radiogroup"></div>
+      </div>
+
+      <div class="next" id="next">
+        <div class="next-title" id="next-title"></div>
+        <div class="countdown" id="countdown"><bdi dir="ltr" id="countdown-value">--:--</bdi></div>
+        <div class="next-at" id="next-at"></div>
+        <div class="next-then" id="next-then"></div>
+        <div class="message" id="message" hidden></div>
+      </div>
+
+      <div class="status" id="status" aria-live="polite">
+        <span id="status-sync"></span>
+        <span class="sep">·</span>
+        <span id="status-audio"></span>
+      </div>
+      <div class="car-line" id="car-line"></div>
+
+      <section class="route" id="route" aria-labelledby="route-title">
+        <h2 class="small-title" id="route-title" data-i18n="route.title">Route</h2>
+        <div class="route-strip" id="route-strip"></div>
+      </section>
+
+      <section class="shabbat" id="shabbat">
+        <h2 class="small-title" data-i18n="shabbat.title">Shabbat & holidays</h2>
+        <div id="shabbat-body"></div>
+      </section>
+    </section>
+
+    <section class="panel shaft-panel" id="shaft-panel">
+      <div class="shaft" id="shaft"></div>
+    </section>
+  </main>
+
+  <section class="debug" id="debug" hidden>
+    <h2 class="small-title" data-i18n="debug.title">Debug</h2>
+    <dl class="debug-list" id="debug-list"></dl>
+    <details><summary data-i18n="debug.events">Recent events</summary><pre id="debug-events"></pre></details>
+    <details><summary data-i18n="debug.candidates">Recent candidates</summary><pre id="debug-candidates"></pre></details>
+    <details><summary data-i18n="debug.raw">Raw state</summary><pre id="debug-raw"></pre></details>
+  </section>
+
+  <footer class="foot">
+    <span data-i18n="about.credit">Based on the idea of</span>
+    <a href="https://github.com/udid/shabat_elevator" target="_blank" rel="noopener">udid/shabat_elevator</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/YuvalWS/shabbat-elevator-tracker" target="_blank" rel="noopener" data-i18n="about.source">Source code</a>
+    <span class="sep">·</span>
+    <span id="version"></span>
+  </footer>
+</div>
+
+<div class="menu" id="lang-menu" role="menu" hidden></div>
+
+<dialog id="settings">
+  <form method="dialog" class="settings-form">
+    <h2 data-i18n="settings.title">Settings</h2>
+
+    <label class="field"><span data-i18n="settings.server">API server</span>
+      <span class="row"><input id="api-base" type="url" inputmode="url" placeholder="https://…" autocomplete="off">
+      <button type="button" id="btn-test" data-i18n="settings.test">Test</button></span>
+      <small data-i18n="settings.server_hint"></small>
+      <output id="test-result"></output>
+    </label>
+
+    <label class="field"><span data-i18n="settings.language">Language</span>
+      <select id="set-lang"></select></label>
+
+    <label class="field"><span data-i18n="settings.theme">Theme</span>
+      <select id="set-theme">
+        <option value="auto" data-i18n="theme.auto">Automatic</option>
+        <option value="light" data-i18n="theme.light">Light</option>
+        <option value="dark" data-i18n="theme.dark">Dark</option>
+      </select></label>
+
+    <label class="field"><span data-i18n="settings.clock">Clock</span>
+      <select id="set-clock">
+        <option value="24" data-i18n="clock.24">24-hour</option>
+        <option value="12" data-i18n="clock.12">12-hour</option>
+      </select></label>
+
+    <div class="field"><span data-i18n="settings.screen">Keep the screen on</span>
+      <output id="screen-mode"></output>
+      <small data-i18n="screen.hint"></small></div>
+
+    <label class="check"><input type="checkbox" id="set-advanced"> <span data-i18n="settings.advanced">Advanced / debug</span></label>
+
+    <div class="field about"><span data-i18n="settings.about">About</span>
+      <p data-i18n="about.text"></p>
+      <p><span data-i18n="about.credit">Based on the idea of</span>
+        <a href="https://github.com/udid/shabat_elevator" target="_blank" rel="noopener">udid/shabat_elevator</a>.</p>
+      <p><a href="https://github.com/YuvalWS/shabbat-elevator-tracker" target="_blank" rel="noopener" data-i18n="about.source">Source code</a>
+        · <span data-i18n="about.license"></span></p>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="btn-save" data-i18n="settings.save">Save</button>
+      <button value="close" data-i18n="settings.close">Close</button>
+    </div>
+  </form>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

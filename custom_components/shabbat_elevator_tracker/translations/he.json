@@ -1,0 +1,80 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "מעקב מעלית שבת",
+        "description": "כתובת שרת המעקב, לדוגמה http://192.168.1.50:8080",
+        "data": {
+          "url": "כתובת השרת"
+        }
+      },
+      "floor": {
+        "title": "הקומה שלך",
+        "data": {
+          "home_floor": "קומת הבית"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "אין חיבור לשרת",
+      "unsupported_version": "גרסת ה-API של השרת אינה נתמכת"
+    },
+    "abort": {
+      "already_configured": "השרת כבר מוגדר"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "קומות",
+        "data": {
+          "home_floor": "קומת הבית",
+          "extra_floors": "קומות נוספות למעקב"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_arrival": {
+        "name": "הגעה הבאה"
+      },
+      "next_arrival_floor": {
+        "name": "הגעה הבאה לקומה {floor}"
+      },
+      "last_sync": {
+        "name": "סנכרון אחרון"
+      },
+      "sync_state": {
+        "name": "מצב סנכרון",
+        "state": {
+          "idle": "לא פעיל",
+          "searching": "מאזין",
+          "provisional": "מאמת",
+          "locked": "מסונכרן",
+          "paused": "בהפסקה"
+        }
+      },
+      "cycle_length": {
+        "name": "אורך סבב"
+      },
+      "car_position": {
+        "name": "מיקום המעלית"
+      }
+    },
+    "binary_sensor": {
+      "audio_stream": {
+        "name": "זרם שמע"
+      },
+      "running": {
+        "name": "המעלית פועלת"
+      },
+      "shabbat_window": {
+        "name": "חלון מעלית שבת"
+      },
+      "issur_melacha": {
+        "name": "איסור מלאכה"
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Suivi d'ascenseur de Chabbat",
+        "description": "URL du serveur, par ex. http://192.168.1.50:8080",
+        "data": {
+          "url": "URL du serveur"
+        }
+      },
+      "floor": {
+        "title": "Votre étage",
+        "data": {
+          "home_floor": "Étage du domicile"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de joindre le serveur",
+      "unsupported_version": "La version d'API du serveur n'est pas prise en charge"
+    },
+    "abort": {
+      "already_configured": "Ce serveur est déjà configuré"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Étages",
+        "data": {
+          "home_floor": "Étage du domicile",
+          "extra_floors": "Autres étages à suivre"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_arrival": {
+        "name": "Prochain passage"
+      },
+      "next_arrival_floor": {
+        "name": "Prochain passage étage {floor}"
+      },
+      "last_sync": {
+        "name": "Dernière synchronisation"
+      },
+      "sync_state": {
+        "name": "État de synchronisation",
+        "state": {
+          "idle": "Inactif",
+          "searching": "À l'écoute",
+          "provisional": "Confirmation",
+          "locked": "Synchronisé",
+          "paused": "En pause"
+        }
+      },
+      "cycle_length": {
+        "name": "Durée du cycle"
+      },
+      "car_position": {
+        "name": "Position de la cabine"
+      }
+    },
+    "binary_sensor": {
+      "audio_stream": {
+        "name": "Flux audio"
+      },
+      "running": {
+        "name": "Ascenseur en service"
+      },
+      "shabbat_window": {
+        "name": "Plage de l'ascenseur de Chabbat"
+      },
+      "issur_melacha": {
+        "name": "Issour mela'ha"
+      }
+    }
+  }
+}

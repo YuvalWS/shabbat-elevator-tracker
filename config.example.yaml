@@ -1,0 +1,97 @@
+# Shabbat Elevator Tracker - example configuration.
+# Copy to config.yaml (git-ignored) and adjust. Every key is optional; omitted keys use
+# these defaults. Secrets (stream credentials) never go here: see audio.auth below.
+#
+# This example is the reference building: ground floor + 12, microphone on floor 3,
+# up on the even floors and down on the odd ones.
+
+building:
+  name: "Example building"
+  floors: ["G", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]  # bottom -> top
+  default_floor: null            # floor preselected in the UI; null = ask
+
+elevator:
+  route: ["G", "2", "4", "6", "8", "10", "12", "11", "9", "7", "5", "3", "1"]  # circular
+  cycle_seconds: 404.4           # full cycle; model durations are scaled to it
+  adaptive_cycle:
+    enabled: true                # refine the cycle from consecutive anchors
+    max_deviation_percent: 2.0
+  dwell_seconds: 10              # common stop time (doors opening -> closed)
+  dwell_overrides: {"G": 60}     # only floors that really differ
+  door_transition_seconds: 2.5
+  travel:
+    leg_overhead_seconds: 12.1   # start + stop per leg
+    per_floor_seconds: 2.8       # per floor crossed
+
+anchor:
+  floor: "3"                     # the floor whose stop the microphone hears
+  route_index: null              # which visit, if the floor appears twice in the route
+  offset_seconds: 0.0            # anchor time = sound onset - offset
+
+audio:
+  # Anything ffmpeg can open. SET_AUDIO_SOURCE overrides it. ${VAR} is expanded from the
+  # environment. For tests: "loop:test-data/recordings" (recorder WAVs, endless, real time).
+  source: "rtsp://frigate.local:8554/doorbell_audio"
+  sample_rate: 16000
+  stall_seconds: 20
+  reconnect_max_backoff_seconds: 60
+  loop_start: null               # "HH:MM": where a loop: source starts (local time of day)
+  auth:
+    # none | basic | bearer | header | frigate. Credentials only from the environment:
+    #   basic / frigate: SET_STREAM_USERNAME, SET_STREAM_PASSWORD
+    #   bearer:          SET_STREAM_TOKEN
+    #   header:          SET_STREAM_HEADERS ("Name: value" lines, separated by \n)
+    # basic + rtsp:// puts the credentials into the URL (go2rtc rtsp username/password).
+    type: "none"
+    login_url: null              # frigate only, e.g. https://frigate.local:8971/api/login
+    tls_verify: true             # false for Frigate's default self-signed certificate
+
+detector:
+  band_hz: [600, 2200]
+  threshold_db: 25.0
+  release_db: 15.0
+  min_event_seconds: 2.0
+  max_event_seconds: 30.0
+  signature: null                # optional spectral template from `calibrate`
+  min_similarity: 0.90           # used only if signature is set
+  background_window_seconds: 30
+  background_percentile: 20
+
+sync:
+  gate_seconds: 8.0              # how far from the expected time a stop may be
+  confirm_tolerance_seconds: 3.0 # two first stops must be k cycles apart within this
+  confirm_min_similarity: 0.90   # ... and sound alike
+  confirm_max_duration_ratio: 1.6
+  confirm_window_cycles: 3
+  pause_after_missed: 3          # missed stops before "paused"
+  stale_after_seconds: 7200
+
+calendar:
+  enabled: true
+  latitude: 32.0781              # Givat Shmuel city centre
+  longitude: 34.8503
+  elevation_m: 50
+  timezone: "Asia/Jerusalem"
+  israel: true                   # false = diaspora (two-day Yom Tov)
+  candle_lighting_minutes: 18    # before sunset (Jerusalem custom: 40)
+  havdalah_minutes: 0            # 0 = nightfall (sun 8.5 deg below the horizon); N = sunset + N min
+  elevator_window:               # when the Shabbat elevator is expected to run
+    before_start_minutes: 10
+    after_end_minutes: 30
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  cors_origins: ["*"]
+  expose_debug: true             # false hides /api/v1/debug and debug fields (public exposure)
+  allow_manual_sync: false       # enables POST /api/v1/sync
+  web_root: null                 # null = bundled web client; a path overrides; "" disables
+  dev_clock_speed: 1.0           # >1 only with a file/loop source (testing)
+
+storage:
+  data_dir: "/data"
+  event_log_days: 14
+  save_clips: false              # WARNING: writes real audio around each candidate (private)
+
+logging:
+  level: "INFO"

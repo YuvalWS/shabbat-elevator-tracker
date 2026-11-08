@@ -1,0 +1,80 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Shabbat Elevator Tracker",
+        "description": "URL of the tracker server, e.g. http://192.168.1.50:8080",
+        "data": {
+          "url": "Server URL"
+        }
+      },
+      "floor": {
+        "title": "Your floor",
+        "data": {
+          "home_floor": "Home floor"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to the server",
+      "unsupported_version": "The server's API version is not supported"
+    },
+    "abort": {
+      "already_configured": "This server is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Floors",
+        "data": {
+          "home_floor": "Home floor",
+          "extra_floors": "Additional floors to track"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_arrival": {
+        "name": "Next arrival"
+      },
+      "next_arrival_floor": {
+        "name": "Next arrival floor {floor}"
+      },
+      "last_sync": {
+        "name": "Last sync"
+      },
+      "sync_state": {
+        "name": "Sync state",
+        "state": {
+          "idle": "Idle",
+          "searching": "Listening",
+          "provisional": "Confirming",
+          "locked": "Synced",
+          "paused": "Paused"
+        }
+      },
+      "cycle_length": {
+        "name": "Cycle length"
+      },
+      "car_position": {
+        "name": "Car position"
+      }
+    },
+    "binary_sensor": {
+      "audio_stream": {
+        "name": "Audio stream"
+      },
+      "running": {
+        "name": "Elevator running"
+      },
+      "shabbat_window": {
+        "name": "Shabbat elevator window"
+      },
+      "issur_melacha": {
+        "name": "Issur melacha"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[Unit]
+Description=Shabbat Elevator Tracker
+Documentation=https://github.com/YuvalWS/shabbat-elevator-tracker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=shabbat-elevator
+Group=shabbat-elevator
+Environment=SET_CONFIG=/etc/shabbat-elevator-tracker/config.yaml
+Environment=SET_DATA_DIR=/var/lib/shabbat-elevator-tracker
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/etc/shabbat-elevator-tracker/env
+ExecStart=/opt/shabbat-elevator-tracker/venv/bin/python -m shabbat_elevator_tracker serve
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/shabbat-elevator-tracker
+WorkingDirectory=/var/lib/shabbat-elevator-tracker
+
+[Install]
+WantedBy=multi-user.target

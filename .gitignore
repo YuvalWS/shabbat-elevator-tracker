@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+node_modules/
+
+# Local runtime data and recordings. Recordings are private: never commit or push them.
+/test-data/
+/data/
+/config.yaml
+*.wav
+*.wav.part
+!tests/fixtures/synthetic/*.wav
+calibration.yaml

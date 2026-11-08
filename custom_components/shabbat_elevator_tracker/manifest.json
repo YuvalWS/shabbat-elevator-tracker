@@ -1,0 +1,12 @@
+{
+  "domain": "shabbat_elevator_tracker",
+  "name": "Shabbat Elevator Tracker",
+  "codeowners": ["@YuvalWS"],
+  "config_flow": true,
+  "documentation": "https://github.com/YuvalWS/shabbat-elevator-tracker",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/YuvalWS/shabbat-elevator-tracker/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

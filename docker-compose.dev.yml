@@ -1,0 +1,64 @@
+# Pseudo-real-time test with the local recordings (test-data/ is never pushed).
+#   docker compose -f docker-compose.dev.yml up --build
+# mediamtx serves rtsp://mediamtx:8554/elevator; a publisher loops the WAVs into it at real
+# time; the tracker consumes it like a camera stream (with RTSP credentials, to exercise
+# authenticated sources). Stop the publisher to test "audio lost" and reconnect:
+#   docker compose -f docker-compose.dev.yml stop publisher
+#
+# Single-container alternative: the tracker reads the WAVs itself as a loop, sped up 10x
+# (one elevator cycle every ~40 s). Set SET_DEV_CLOCK_SPEED to 1 for real time.
+#   docker compose -f docker-compose.dev.yml up --build loop     -> http://localhost:8099
+services:
+  loop:
+    build: .
+    profiles: [loop]
+    ports:
+      - "8099:8080"
+    environment:
+      TZ: Asia/Jerusalem
+      SET_AUDIO_SOURCE: loop:/test-data/recordings
+      SET_CFG__audio__loop_start: "00:56"
+      SET_DEV_CLOCK_SPEED: "10"
+      SET_CFG__server__allow_manual_sync: "true"
+    volumes:
+      - ./config.example.yaml:/config/config.yaml:ro
+      - ./test-data:/test-data:ro
+
+  mediamtx:
+    image: bluenviron/mediamtx:1.9.3
+    environment:
+      MTX_PROTOCOLS: tcp
+      MTX_PATHS_ALL_OTHERS_PUBLISHUSER: dev
+      MTX_PATHS_ALL_OTHERS_PUBLISHPASS: dev
+      MTX_PATHS_ALL_OTHERS_READUSER: elevator
+      MTX_PATHS_ALL_OTHERS_READPASS: dev-secret
+    ports:
+      - "8554:8554"
+
+  publisher:
+    image: linuxserver/ffmpeg:7.1.1
+    depends_on: [mediamtx]
+    volumes:
+      - ./test-data/recordings:/rec:ro
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >
+        cd /rec && ls *.wav | sort | sed "s/.*/file '&'/" > /tmp/list.txt &&
+        exec ffmpeg -hide_banner -loglevel warning -re -stream_loop -1 -f concat -safe 0 -i /tmp/list.txt
+        -c:a aac -b:a 64k -f rtsp -rtsp_transport tcp rtsp://dev:dev@mediamtx:8554/elevator
+    restart: unless-stopped
+
+  tracker:
+    build: .
+    depends_on: [mediamtx]
+    ports:
+      - "8080:8080"
+    environment:
+      TZ: Asia/Jerusalem
+      SET_AUDIO_SOURCE: rtsp://mediamtx:8554/elevator
+      SET_AUTH_TYPE: basic
+      SET_STREAM_USERNAME: elevator
+      SET_STREAM_PASSWORD: dev-secret
+      SET_CFG__server__allow_manual_sync: "true"
+    volumes:
+      - ./config.example.yaml:/config/config.yaml:ro

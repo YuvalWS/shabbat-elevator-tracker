@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shabbat-elevator-tracker"
+version = "0.1.0"
+description = "Predicts when a Shabbat elevator reaches each floor by listening to one floor."
+readme = "README.md"
+license = "GPL-3.0-or-later"
+authors = [{ name = "Yuval Weiss" }]
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.24",
+  "aiohttp>=3.9",
+  "PyYAML>=6.0",
+  "hdate>=1.1,<2",
+  "astral>=3.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "pytest-aiohttp>=1.0", "ruff>=0.5"]
+
+[project.scripts]
+shabbat-elevator-tracker = "shabbat_elevator_tracker.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/YuvalWS/shabbat-elevator-tracker"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["shabbat_elevator_tracker*"]
+
+[tool.setuptools.package-data]
+"shabbat_elevator_tracker.web" = ["*.html", "*.css", "*.js", "*.webmanifest", "*.svg", "*.mp4"]
+"shabbat_elevator_tracker.web.i18n" = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+  "recordings: needs the local-only test-data/ recordings (auto-skipped when absent)",
+  "slow: longer synthetic runs",
+]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["custom_components"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["shabbat_elevator_tracker"]

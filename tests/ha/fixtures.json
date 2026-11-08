@@ -1,0 +1,733 @@
+{
+ "waiting": {
+  "api_version": 1,
+  "version": "0.1.0",
+  "instance_id": "0123456789abcdef0123456789abcdef",
+  "server_time": "2026-11-07T14:30:00.000Z",
+  "server_time_ms": 1794061800000,
+  "clock_rate": 1.0,
+  "building": {
+   "name": "Example building",
+   "floors": [
+    "G",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+   ],
+   "default_floor": null
+  },
+  "stream": {
+   "state": "connecting",
+   "since": null,
+   "last_audio_at": null,
+   "last_audio_at_ms": null,
+   "reconnects_total": 0,
+   "level_dbfs": null,
+   "last_error": null
+  },
+  "sync": {
+   "state": "searching",
+   "last_sync_at": null,
+   "last_sync_at_ms": null,
+   "anchor_floor": "3",
+   "missed": 0,
+   "source": null,
+   "paused_since": null,
+   "pending": 0,
+   "syncs_total": 0,
+   "next_expected_at": null
+  },
+  "cycle": {
+   "seconds": 404.4,
+   "configured_seconds": 404.4,
+   "adaptive": true
+  },
+  "timeline": {
+   "anchor_time_ms": null,
+   "cycle_seconds": 404.4,
+   "stops": [
+    {
+     "floor": "3",
+     "visit": 0,
+     "arrive": 0.0,
+     "door_open": 2.499,
+     "door_close": 7.498,
+     "depart": 9.998
+    },
+    {
+     "floor": "1",
+     "visit": 0,
+     "arrive": 27.693,
+     "door_open": 30.193,
+     "door_close": 35.191,
+     "depart": 37.691
+    },
+    {
+     "floor": "G",
+     "visit": 0,
+     "arrive": 52.587,
+     "door_open": 55.086,
+     "door_close": 110.073,
+     "depart": 112.572
+    },
+    {
+     "floor": "2",
+     "visit": 0,
+     "arrive": 130.268,
+     "door_open": 132.767,
+     "door_close": 137.766,
+     "depart": 140.265
+    },
+    {
+     "floor": "4",
+     "visit": 0,
+     "arrive": 157.961,
+     "door_open": 160.46,
+     "door_close": 165.459,
+     "depart": 167.958
+    },
+    {
+     "floor": "6",
+     "visit": 0,
+     "arrive": 185.654,
+     "door_open": 188.153,
+     "door_close": 193.152,
+     "depart": 195.652
+    },
+    {
+     "floor": "8",
+     "visit": 0,
+     "arrive": 213.347,
+     "door_open": 215.847,
+     "door_close": 220.845,
+     "depart": 223.345
+    },
+    {
+     "floor": "10",
+     "visit": 0,
+     "arrive": 241.04,
+     "door_open": 243.54,
+     "door_close": 248.539,
+     "depart": 251.038
+    },
+    {
+     "floor": "12",
+     "visit": 0,
+     "arrive": 268.734,
+     "door_open": 271.233,
+     "door_close": 276.232,
+     "depart": 278.731
+    },
+    {
+     "floor": "11",
+     "visit": 0,
+     "arrive": 293.627,
+     "door_open": 296.127,
+     "door_close": 301.126,
+     "depart": 303.625
+    },
+    {
+     "floor": "9",
+     "visit": 0,
+     "arrive": 321.321,
+     "door_open": 323.82,
+     "door_close": 328.819,
+     "depart": 331.318
+    },
+    {
+     "floor": "7",
+     "visit": 0,
+     "arrive": 349.014,
+     "door_open": 351.513,
+     "door_close": 356.512,
+     "depart": 359.011
+    },
+    {
+     "floor": "5",
+     "visit": 0,
+     "arrive": 376.707,
+     "door_open": 379.206,
+     "door_close": 384.205,
+     "depart": 386.704
+    }
+   ],
+   "moves": [
+    {
+     "from": "3",
+     "to": "1",
+     "direction": "down",
+     "start": 9.998,
+     "end": 27.693
+    },
+    {
+     "from": "1",
+     "to": "G",
+     "direction": "down",
+     "start": 37.691,
+     "end": 52.587
+    },
+    {
+     "from": "G",
+     "to": "2",
+     "direction": "up",
+     "start": 112.572,
+     "end": 130.268
+    },
+    {
+     "from": "2",
+     "to": "4",
+     "direction": "up",
+     "start": 140.265,
+     "end": 157.961
+    },
+    {
+     "from": "4",
+     "to": "6",
+     "direction": "up",
+     "start": 167.958,
+     "end": 185.654
+    },
+    {
+     "from": "6",
+     "to": "8",
+     "direction": "up",
+     "start": 195.652,
+     "end": 213.347
+    },
+    {
+     "from": "8",
+     "to": "10",
+     "direction": "up",
+     "start": 223.345,
+     "end": 241.04
+    },
+    {
+     "from": "10",
+     "to": "12",
+     "direction": "up",
+     "start": 251.038,
+     "end": 268.734
+    },
+    {
+     "from": "12",
+     "to": "11",
+     "direction": "down",
+     "start": 278.731,
+     "end": 293.627
+    },
+    {
+     "from": "11",
+     "to": "9",
+     "direction": "down",
+     "start": 303.625,
+     "end": 321.321
+    },
+    {
+     "from": "9",
+     "to": "7",
+     "direction": "down",
+     "start": 331.318,
+     "end": 349.014
+    },
+    {
+     "from": "7",
+     "to": "5",
+     "direction": "down",
+     "start": 359.011,
+     "end": 376.707
+    },
+    {
+     "from": "5",
+     "to": "3",
+     "direction": "down",
+     "start": 386.704,
+     "end": 404.4
+    }
+   ]
+  },
+  "prediction": {
+   "valid": false,
+   "reason": "no_sync",
+   "degraded": null,
+   "position": null,
+   "next_arrivals": null
+  },
+  "calendar": {
+   "enabled": true,
+   "now": {
+    "in_rest_span": true,
+    "issur_melacha": true,
+    "in_elevator_window": true
+   },
+   "current_span": {
+    "start": "2026-11-06T14:30:00.000Z",
+    "end": "2026-11-07T15:25:00.000Z",
+    "start_ms": 1793975400000,
+    "end_ms": 1794065100000,
+    "window_start": "2026-11-06T14:20:00.000Z",
+    "window_end": "2026-11-07T15:55:00.000Z",
+    "days": [
+     {
+      "date": "2026-11-07",
+      "ids": [
+       "shabbat"
+      ]
+     }
+    ]
+   },
+   "next_span": {
+    "start": "2026-11-13T14:25:00.000Z",
+    "end": "2026-11-14T15:21:00.000Z",
+    "start_ms": 1794579900000,
+    "end_ms": 1794669660000,
+    "window_start": "2026-11-13T14:15:00.000Z",
+    "window_end": "2026-11-14T15:51:00.000Z",
+    "days": [
+     {
+      "date": "2026-11-14",
+      "ids": [
+       "shabbat"
+      ]
+     }
+    ]
+   },
+   "parsha_ids": [
+    "chayei_sara"
+   ],
+   "today_ids": [
+    "shabbat"
+   ],
+   "hebrew_date": {
+    "day": 27,
+    "month_id": "marcheshvan",
+    "year": 5787
+   },
+   "timezone": "Asia/Jerusalem"
+  },
+  "debug_enabled": true
+ },
+ "locked": {
+  "api_version": 1,
+  "version": "0.1.0",
+  "instance_id": "0123456789abcdef0123456789abcdef",
+  "server_time": "2026-11-07T14:36:54.400Z",
+  "server_time_ms": 1794062214400,
+  "clock_rate": 1.0,
+  "building": {
+   "name": "Example building",
+   "floors": [
+    "G",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+   ],
+   "default_floor": null
+  },
+  "stream": {
+   "state": "connected",
+   "since": null,
+   "last_audio_at": null,
+   "last_audio_at_ms": null,
+   "reconnects_total": 0,
+   "level_dbfs": null,
+   "last_error": null
+  },
+  "sync": {
+   "state": "locked",
+   "last_sync_at": "2026-11-07T14:36:44.400Z",
+   "last_sync_at_ms": 1794062204400,
+   "anchor_floor": "3",
+   "missed": 0,
+   "source": "audio",
+   "paused_since": null,
+   "pending": 0,
+   "syncs_total": 1,
+   "next_expected_at": "2026-11-07T14:43:28.800Z"
+  },
+  "cycle": {
+   "seconds": 404.4,
+   "configured_seconds": 404.4,
+   "adaptive": true
+  },
+  "timeline": {
+   "anchor_time_ms": 1794062204400,
+   "cycle_seconds": 404.4,
+   "stops": [
+    {
+     "floor": "3",
+     "visit": 0,
+     "arrive": 0.0,
+     "door_open": 2.499,
+     "door_close": 7.498,
+     "depart": 9.998
+    },
+    {
+     "floor": "1",
+     "visit": 0,
+     "arrive": 27.693,
+     "door_open": 30.193,
+     "door_close": 35.191,
+     "depart": 37.691
+    },
+    {
+     "floor": "G",
+     "visit": 0,
+     "arrive": 52.587,
+     "door_open": 55.086,
+     "door_close": 110.073,
+     "depart": 112.572
+    },
+    {
+     "floor": "2",
+     "visit": 0,
+     "arrive": 130.268,
+     "door_open": 132.767,
+     "door_close": 137.766,
+     "depart": 140.265
+    },
+    {
+     "floor": "4",
+     "visit": 0,
+     "arrive": 157.961,
+     "door_open": 160.46,
+     "door_close": 165.459,
+     "depart": 167.958
+    },
+    {
+     "floor": "6",
+     "visit": 0,
+     "arrive": 185.654,
+     "door_open": 188.153,
+     "door_close": 193.152,
+     "depart": 195.652
+    },
+    {
+     "floor": "8",
+     "visit": 0,
+     "arrive": 213.347,
+     "door_open": 215.847,
+     "door_close": 220.845,
+     "depart": 223.345
+    },
+    {
+     "floor": "10",
+     "visit": 0,
+     "arrive": 241.04,
+     "door_open": 243.54,
+     "door_close": 248.539,
+     "depart": 251.038
+    },
+    {
+     "floor": "12",
+     "visit": 0,
+     "arrive": 268.734,
+     "door_open": 271.233,
+     "door_close": 276.232,
+     "depart": 278.731
+    },
+    {
+     "floor": "11",
+     "visit": 0,
+     "arrive": 293.627,
+     "door_open": 296.127,
+     "door_close": 301.126,
+     "depart": 303.625
+    },
+    {
+     "floor": "9",
+     "visit": 0,
+     "arrive": 321.321,
+     "door_open": 323.82,
+     "door_close": 328.819,
+     "depart": 331.318
+    },
+    {
+     "floor": "7",
+     "visit": 0,
+     "arrive": 349.014,
+     "door_open": 351.513,
+     "door_close": 356.512,
+     "depart": 359.011
+    },
+    {
+     "floor": "5",
+     "visit": 0,
+     "arrive": 376.707,
+     "door_open": 379.206,
+     "door_close": 384.205,
+     "depart": 386.704
+    }
+   ],
+   "moves": [
+    {
+     "from": "3",
+     "to": "1",
+     "direction": "down",
+     "start": 9.998,
+     "end": 27.693
+    },
+    {
+     "from": "1",
+     "to": "G",
+     "direction": "down",
+     "start": 37.691,
+     "end": 52.587
+    },
+    {
+     "from": "G",
+     "to": "2",
+     "direction": "up",
+     "start": 112.572,
+     "end": 130.268
+    },
+    {
+     "from": "2",
+     "to": "4",
+     "direction": "up",
+     "start": 140.265,
+     "end": 157.961
+    },
+    {
+     "from": "4",
+     "to": "6",
+     "direction": "up",
+     "start": 167.958,
+     "end": 185.654
+    },
+    {
+     "from": "6",
+     "to": "8",
+     "direction": "up",
+     "start": 195.652,
+     "end": 213.347
+    },
+    {
+     "from": "8",
+     "to": "10",
+     "direction": "up",
+     "start": 223.345,
+     "end": 241.04
+    },
+    {
+     "from": "10",
+     "to": "12",
+     "direction": "up",
+     "start": 251.038,
+     "end": 268.734
+    },
+    {
+     "from": "12",
+     "to": "11",
+     "direction": "down",
+     "start": 278.731,
+     "end": 293.627
+    },
+    {
+     "from": "11",
+     "to": "9",
+     "direction": "down",
+     "start": 303.625,
+     "end": 321.321
+    },
+    {
+     "from": "9",
+     "to": "7",
+     "direction": "down",
+     "start": 331.318,
+     "end": 349.014
+    },
+    {
+     "from": "7",
+     "to": "5",
+     "direction": "down",
+     "start": 359.011,
+     "end": 376.707
+    },
+    {
+     "from": "5",
+     "to": "3",
+     "direction": "down",
+     "start": 386.704,
+     "end": 404.4
+    }
+   ]
+  },
+  "prediction": {
+   "valid": true,
+   "reason": null,
+   "degraded": null,
+   "position": {
+    "kind": "move",
+    "from": "3",
+    "to": "1",
+    "direction": "down",
+    "floor_pos": 2.9997,
+    "phase": 10.0
+   },
+   "next_arrivals": {
+    "G": {
+     "arrive_at": "2026-11-07T14:37:36.986Z",
+     "arrive_at_ms": 1794062256987,
+     "depart_at": "2026-11-07T14:38:36.972Z",
+     "depart_at_ms": 1794062316972,
+     "here_now": false
+    },
+    "1": {
+     "arrive_at": "2026-11-07T14:37:12.093Z",
+     "arrive_at_ms": 1794062232093,
+     "depart_at": "2026-11-07T14:37:22.090Z",
+     "depart_at_ms": 1794062242091,
+     "here_now": false
+    },
+    "2": {
+     "arrive_at": "2026-11-07T14:38:54.667Z",
+     "arrive_at_ms": 1794062334668,
+     "depart_at": "2026-11-07T14:39:04.665Z",
+     "depart_at_ms": 1794062344665,
+     "here_now": false
+    },
+    "3": {
+     "arrive_at": "2026-11-07T14:43:28.800Z",
+     "arrive_at_ms": 1794062608800,
+     "depart_at": "2026-11-07T14:43:38.797Z",
+     "depart_at_ms": 1794062618798,
+     "here_now": false
+    },
+    "4": {
+     "arrive_at": "2026-11-07T14:39:22.360Z",
+     "arrive_at_ms": 1794062362361,
+     "depart_at": "2026-11-07T14:39:32.358Z",
+     "depart_at_ms": 1794062372358,
+     "here_now": false
+    },
+    "5": {
+     "arrive_at": "2026-11-07T14:43:01.106Z",
+     "arrive_at_ms": 1794062581107,
+     "depart_at": "2026-11-07T14:43:11.104Z",
+     "depart_at_ms": 1794062591104,
+     "here_now": false
+    },
+    "6": {
+     "arrive_at": "2026-11-07T14:39:50.054Z",
+     "arrive_at_ms": 1794062390054,
+     "depart_at": "2026-11-07T14:40:00.051Z",
+     "depart_at_ms": 1794062400052,
+     "here_now": false
+    },
+    "7": {
+     "arrive_at": "2026-11-07T14:42:33.413Z",
+     "arrive_at_ms": 1794062553414,
+     "depart_at": "2026-11-07T14:42:43.411Z",
+     "depart_at_ms": 1794062563411,
+     "here_now": false
+    },
+    "8": {
+     "arrive_at": "2026-11-07T14:40:17.747Z",
+     "arrive_at_ms": 1794062417747,
+     "depart_at": "2026-11-07T14:40:27.744Z",
+     "depart_at_ms": 1794062427745,
+     "here_now": false
+    },
+    "9": {
+     "arrive_at": "2026-11-07T14:42:05.720Z",
+     "arrive_at_ms": 1794062525721,
+     "depart_at": "2026-11-07T14:42:15.718Z",
+     "depart_at_ms": 1794062535718,
+     "here_now": false
+    },
+    "10": {
+     "arrive_at": "2026-11-07T14:40:45.440Z",
+     "arrive_at_ms": 1794062445440,
+     "depart_at": "2026-11-07T14:40:55.437Z",
+     "depart_at_ms": 1794062455438,
+     "here_now": false
+    },
+    "11": {
+     "arrive_at": "2026-11-07T14:41:38.027Z",
+     "arrive_at_ms": 1794062498027,
+     "depart_at": "2026-11-07T14:41:48.024Z",
+     "depart_at_ms": 1794062508025,
+     "here_now": false
+    },
+    "12": {
+     "arrive_at": "2026-11-07T14:41:13.133Z",
+     "arrive_at_ms": 1794062473134,
+     "depart_at": "2026-11-07T14:41:23.131Z",
+     "depart_at_ms": 1794062483131,
+     "here_now": false
+    }
+   }
+  },
+  "calendar": {
+   "enabled": true,
+   "now": {
+    "in_rest_span": true,
+    "issur_melacha": true,
+    "in_elevator_window": true
+   },
+   "current_span": {
+    "start": "2026-11-06T14:30:00.000Z",
+    "end": "2026-11-07T15:25:00.000Z",
+    "start_ms": 1793975400000,
+    "end_ms": 1794065100000,
+    "window_start": "2026-11-06T14:20:00.000Z",
+    "window_end": "2026-11-07T15:55:00.000Z",
+    "days": [
+     {
+      "date": "2026-11-07",
+      "ids": [
+       "shabbat"
+      ]
+     }
+    ]
+   },
+   "next_span": {
+    "start": "2026-11-13T14:25:00.000Z",
+    "end": "2026-11-14T15:21:00.000Z",
+    "start_ms": 1794579900000,
+    "end_ms": 1794669660000,
+    "window_start": "2026-11-13T14:15:00.000Z",
+    "window_end": "2026-11-14T15:51:00.000Z",
+    "days": [
+     {
+      "date": "2026-11-14",
+      "ids": [
+       "shabbat"
+      ]
+     }
+    ]
+   },
+   "parsha_ids": [
+    "chayei_sara"
+   ],
+   "today_ids": [
+    "shabbat"
+   ],
+   "hebrew_date": {
+    "day": 27,
+    "month_id": "marcheshvan",
+    "year": 5787
+   },
+   "timezone": "Asia/Jerusalem"
+  },
+  "debug_enabled": true
+ }
+}

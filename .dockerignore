@@ -1,0 +1,17 @@
+.git
+.github
+test-data
+data
+tests
+docs
+custom_components
+deploy
+tools
+**/__pycache__
+*.pyc
+*.wav
+*.wav.part
+config.yaml
+calibration.yaml
+.venv
+venv

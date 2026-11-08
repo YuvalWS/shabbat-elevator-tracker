@@ -1,0 +1,16 @@
+#!/bin/sh
+# Refuse to push audio recordings or local test data.
+# Enable once per clone:  git config core.hooksPath tools/git-hooks
+zero=0000000000000000000000000000000000000000
+status=0
+while read local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue
+  if [ "$remote_sha" = "$zero" ]; then range="$local_sha"; else range="$remote_sha..$local_sha"; fi
+  bad=$(git log --name-only --format= "$range" -- | sort -u | grep -E -i '(^|/)test-data/|\.(wav|wav\.part|mp3|m4a|aac|flac|ogg|opus)$' | grep -v -E '^tests/fixtures/synthetic/')
+  if [ -n "$bad" ]; then
+    echo "pre-push: refusing to push recordings / local test data:" >&2
+    echo "$bad" | sed 's/^/  /' >&2
+    status=1
+  fi
+done
+exit $status

@@ -1,0 +1,8091 @@
+{
+ "floors": [
+  "G",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12"
+ ],
+ "anchor_time_ms": 1794061800123,
+ "timeline": {
+  "cycle_seconds": 404.4,
+  "stops": [
+   {
+    "floor": "3",
+    "visit": 0,
+    "arrive": 0.0,
+    "door_open": 2.499,
+    "door_close": 7.498,
+    "depart": 9.998
+   },
+   {
+    "floor": "1",
+    "visit": 0,
+    "arrive": 27.693,
+    "door_open": 30.193,
+    "door_close": 35.191,
+    "depart": 37.691
+   },
+   {
+    "floor": "G",
+    "visit": 0,
+    "arrive": 52.587,
+    "door_open": 55.086,
+    "door_close": 110.073,
+    "depart": 112.572
+   },
+   {
+    "floor": "2",
+    "visit": 0,
+    "arrive": 130.268,
+    "door_open": 132.767,
+    "door_close": 137.766,
+    "depart": 140.265
+   },
+   {
+    "floor": "4",
+    "visit": 0,
+    "arrive": 157.961,
+    "door_open": 160.46,
+    "door_close": 165.459,
+    "depart": 167.958
+   },
+   {
+    "floor": "6",
+    "visit": 0,
+    "arrive": 185.654,
+    "door_open": 188.153,
+    "door_close": 193.152,
+    "depart": 195.652
+   },
+   {
+    "floor": "8",
+    "visit": 0,
+    "arrive": 213.347,
+    "door_open": 215.847,
+    "door_close": 220.845,
+    "depart": 223.345
+   },
+   {
+    "floor": "10",
+    "visit": 0,
+    "arrive": 241.04,
+    "door_open": 243.54,
+    "door_close": 248.539,
+    "depart": 251.038
+   },
+   {
+    "floor": "12",
+    "visit": 0,
+    "arrive": 268.734,
+    "door_open": 271.233,
+    "door_close": 276.232,
+    "depart": 278.731
+   },
+   {
+    "floor": "11",
+    "visit": 0,
+    "arrive": 293.627,
+    "door_open": 296.127,
+    "door_close": 301.126,
+    "depart": 303.625
+   },
+   {
+    "floor": "9",
+    "visit": 0,
+    "arrive": 321.321,
+    "door_open": 323.82,
+    "door_close": 328.819,
+    "depart": 331.318
+   },
+   {
+    "floor": "7",
+    "visit": 0,
+    "arrive": 349.014,
+    "door_open": 351.513,
+    "door_close": 356.512,
+    "depart": 359.011
+   },
+   {
+    "floor": "5",
+    "visit": 0,
+    "arrive": 376.707,
+    "door_open": 379.206,
+    "door_close": 384.205,
+    "depart": 386.704
+   }
+  ],
+  "moves": [
+   {
+    "from": "3",
+    "to": "1",
+    "direction": "down",
+    "start": 9.998,
+    "end": 27.693
+   },
+   {
+    "from": "1",
+    "to": "G",
+    "direction": "down",
+    "start": 37.691,
+    "end": 52.587
+   },
+   {
+    "from": "G",
+    "to": "2",
+    "direction": "up",
+    "start": 112.572,
+    "end": 130.268
+   },
+   {
+    "from": "2",
+    "to": "4",
+    "direction": "up",
+    "start": 140.265,
+    "end": 157.961
+   },
+   {
+    "from": "4",
+    "to": "6",
+    "direction": "up",
+    "start": 167.958,
+    "end": 185.654
+   },
+   {
+    "from": "6",
+    "to": "8",
+    "direction": "up",
+    "start": 195.652,
+    "end": 213.347
+   },
+   {
+    "from": "8",
+    "to": "10",
+    "direction": "up",
+    "start": 223.345,
+    "end": 241.04
+   },
+   {
+    "from": "10",
+    "to": "12",
+    "direction": "up",
+    "start": 251.038,
+    "end": 268.734
+   },
+   {
+    "from": "12",
+    "to": "11",
+    "direction": "down",
+    "start": 278.731,
+    "end": 293.627
+   },
+   {
+    "from": "11",
+    "to": "9",
+    "direction": "down",
+    "start": 303.625,
+    "end": 321.321
+   },
+   {
+    "from": "9",
+    "to": "7",
+    "direction": "down",
+    "start": 331.318,
+    "end": 349.014
+   },
+   {
+    "from": "7",
+    "to": "5",
+    "direction": "down",
+    "start": 359.011,
+    "end": 376.707
+   },
+   {
+    "from": "5",
+    "to": "3",
+    "direction": "down",
+    "start": 386.704,
+    "end": 404.4
+   }
+  ]
+ },
+ "queries": [
+  {
+   "now_ms": 1794061800123,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 3.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794061852709.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794061827816.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794061800123.0,
+     "here": true
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061807104,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 3.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794061852709.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794061827816.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": true
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061814085,
+   "position": {
+    "kind": "move",
+    "floor_pos": 2.5519
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794061852709.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794061827816.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061821066,
+   "position": {
+    "kind": "move",
+    "floor_pos": 1.7629
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794061852709.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794061827816.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061828047,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 1.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794061852709.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": true
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061835028,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 1.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794061852709.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": true
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061842009,
+   "position": {
+    "kind": "move",
+    "floor_pos": 0.7184
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794061852709.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061848990,
+   "position": {
+    "kind": "move",
+    "floor_pos": 0.2497
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794061852709.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061855971,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061862952,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061869934,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061876915,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061883896,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061890877,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061897858,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061904839,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061911820,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061918801,
+   "position": {
+    "kind": "move",
+    "floor_pos": 0.6901
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061925782,
+   "position": {
+    "kind": "move",
+    "floor_pos": 1.4791
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794061930390.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061932763,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 2.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": true
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061939745,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 2.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": true
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061946726,
+   "position": {
+    "kind": "move",
+    "floor_pos": 2.7163
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061953707,
+   "position": {
+    "kind": "move",
+    "floor_pos": 3.5053
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794061958083.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061960688,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 4.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": true
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061967669,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 4.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": true
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061974650,
+   "position": {
+    "kind": "move",
+    "floor_pos": 4.7424
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061981631,
+   "position": {
+    "kind": "move",
+    "floor_pos": 5.5314
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794061985777.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061988612,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 6.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": true
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794061995593,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 6.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": true
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062002574,
+   "position": {
+    "kind": "move",
+    "floor_pos": 6.7685
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062009556,
+   "position": {
+    "kind": "move",
+    "floor_pos": 7.5576
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062013470.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062016537,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 8.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": true
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062023518,
+   "position": {
+    "kind": "move",
+    "floor_pos": 8.0057
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062030499,
+   "position": {
+    "kind": "move",
+    "floor_pos": 8.7947
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062037480,
+   "position": {
+    "kind": "move",
+    "floor_pos": 9.5837
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062041163.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062044461,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 10.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": true
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062051442,
+   "position": {
+    "kind": "move",
+    "floor_pos": 10.0318
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062058423,
+   "position": {
+    "kind": "move",
+    "floor_pos": 10.8208
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062065404,
+   "position": {
+    "kind": "move",
+    "floor_pos": 11.6098
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062068856.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062072385,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 12.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": true
+    }
+   }
+  },
+  {
+   "now_ms": 1794062079367,
+   "position": {
+    "kind": "move",
+    "floor_pos": 11.9656
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062086348,
+   "position": {
+    "kind": "move",
+    "floor_pos": 11.4969
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062093329,
+   "position": {
+    "kind": "move",
+    "floor_pos": 11.0283
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062093750.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062100310,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 11.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": true
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062107291,
+   "position": {
+    "kind": "move",
+    "floor_pos": 10.5996
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062114272,
+   "position": {
+    "kind": "move",
+    "floor_pos": 9.8105
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062121253,
+   "position": {
+    "kind": "move",
+    "floor_pos": 9.0215
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062121443.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062128234,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 9.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": true
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062135215,
+   "position": {
+    "kind": "move",
+    "floor_pos": 8.5735
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062142196,
+   "position": {
+    "kind": "move",
+    "floor_pos": 7.7845
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062149136.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062149178,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 7.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": true
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062156159,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 7.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": true
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062163140,
+   "position": {
+    "kind": "move",
+    "floor_pos": 6.5473
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062170121,
+   "position": {
+    "kind": "move",
+    "floor_pos": 5.7582
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062176829.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062177102,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 5.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": true
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062184083,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 5.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": true
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062191064,
+   "position": {
+    "kind": "move",
+    "floor_pos": 4.5212
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062198045,
+   "position": {
+    "kind": "move",
+    "floor_pos": 3.7322
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062204523.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062205026,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 3.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": true
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062212007,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 3.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": true
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062218989,
+   "position": {
+    "kind": "move",
+    "floor_pos": 2.495
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062225970,
+   "position": {
+    "kind": "move",
+    "floor_pos": 1.706
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062232216.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062232951,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 1.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": true
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062239932,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 1.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": true
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062246913,
+   "position": {
+    "kind": "move",
+    "floor_pos": 0.6845
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062253894,
+   "position": {
+    "kind": "move",
+    "floor_pos": 0.2159
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062257109.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062260875,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062267856,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062274837,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062281818,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062288800,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062295781,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062302762,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062309743,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062316724,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062323705,
+   "position": {
+    "kind": "move",
+    "floor_pos": 0.7471
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062330686,
+   "position": {
+    "kind": "move",
+    "floor_pos": 1.5361
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062334790.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062337667,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 2.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": true
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062344648,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 2.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": true
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062351629,
+   "position": {
+    "kind": "move",
+    "floor_pos": 2.7731
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062358611,
+   "position": {
+    "kind": "move",
+    "floor_pos": 3.5623
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062362483.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062365592,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 4.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": true
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062372573,
+   "position": {
+    "kind": "move",
+    "floor_pos": 4.0103
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062379554,
+   "position": {
+    "kind": "move",
+    "floor_pos": 4.7994
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062386535,
+   "position": {
+    "kind": "move",
+    "floor_pos": 5.5884
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062390177.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062393516,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 6.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": true
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062400497,
+   "position": {
+    "kind": "move",
+    "floor_pos": 6.0364
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062407478,
+   "position": {
+    "kind": "move",
+    "floor_pos": 6.8254
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062414459,
+   "position": {
+    "kind": "move",
+    "floor_pos": 7.6145
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062417870.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062421440,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 8.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": true
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062428422,
+   "position": {
+    "kind": "move",
+    "floor_pos": 8.0626
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062435403,
+   "position": {
+    "kind": "move",
+    "floor_pos": 8.8516
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062442384,
+   "position": {
+    "kind": "move",
+    "floor_pos": 9.6407
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062445563.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062449365,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 10.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": true
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062456346,
+   "position": {
+    "kind": "move",
+    "floor_pos": 10.0887
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062463327,
+   "position": {
+    "kind": "move",
+    "floor_pos": 10.8777
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062470308,
+   "position": {
+    "kind": "move",
+    "floor_pos": 11.6667
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062473256.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062477289,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 12.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": true
+    }
+   }
+  },
+  {
+   "now_ms": 1794062484270,
+   "position": {
+    "kind": "move",
+    "floor_pos": 11.9318
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062491251,
+   "position": {
+    "kind": "move",
+    "floor_pos": 11.4632
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062498150.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062498233,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 11.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": true
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062505214,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 11.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": true
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062512195,
+   "position": {
+    "kind": "move",
+    "floor_pos": 10.5426
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062519176,
+   "position": {
+    "kind": "move",
+    "floor_pos": 9.7536
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062525843.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062526157,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 9.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": true
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062533138,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 9.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": true
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062540119,
+   "position": {
+    "kind": "move",
+    "floor_pos": 8.5165
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062547100,
+   "position": {
+    "kind": "move",
+    "floor_pos": 7.7275
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062553536.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062554081,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 7.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": true
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062561062,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 7.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": true
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062568044,
+   "position": {
+    "kind": "move",
+    "floor_pos": 6.4903
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062575025,
+   "position": {
+    "kind": "move",
+    "floor_pos": 5.7013
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062581229.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062582006,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 5.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": true
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062588987,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 5.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": true
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062595968,
+   "position": {
+    "kind": "move",
+    "floor_pos": 4.4642
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062602949,
+   "position": {
+    "kind": "move",
+    "floor_pos": 3.6752
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.788,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794062608923.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.092,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.244,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.396,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062609930,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 3.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": true
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062616911,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 3.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": true
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062623892,
+   "position": {
+    "kind": "move",
+    "floor_pos": 2.4381
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062630873,
+   "position": {
+    "kind": "move",
+    "floor_pos": 1.6491
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794062636616.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062637855,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 1.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": true
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062644836,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 1.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": true
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062651817,
+   "position": {
+    "kind": "move",
+    "floor_pos": 0.6507
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062658798,
+   "position": {
+    "kind": "move",
+    "floor_pos": 0.1821
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794062661509.996,
+     "here": false
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062665779,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794063065909.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062672760,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794063065909.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062679741,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794063065909.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062686722,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794063065909.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  },
+  {
+   "now_ms": 1794062693703,
+   "position": {
+    "kind": "stop",
+    "floor_pos": 0.0
+   },
+   "next": {
+    "G": {
+     "arrive_at": 1794063065909.996,
+     "here": true
+    },
+    "1": {
+     "arrive_at": 1794063041016.152,
+     "here": false
+    },
+    "2": {
+     "arrive_at": 1794062739190.787,
+     "here": false
+    },
+    "3": {
+     "arrive_at": 1794063013323.0,
+     "here": false
+    },
+    "4": {
+     "arrive_at": 1794062766883.939,
+     "here": false
+    },
+    "5": {
+     "arrive_at": 1794062985629.848,
+     "here": false
+    },
+    "6": {
+     "arrive_at": 1794062794577.091,
+     "here": false
+    },
+    "7": {
+     "arrive_at": 1794062957936.696,
+     "here": false
+    },
+    "8": {
+     "arrive_at": 1794062822270.243,
+     "here": false
+    },
+    "9": {
+     "arrive_at": 1794062930243.544,
+     "here": false
+    },
+    "10": {
+     "arrive_at": 1794062849963.395,
+     "here": false
+    },
+    "11": {
+     "arrive_at": 1794062902550.392,
+     "here": false
+    },
+    "12": {
+     "arrive_at": 1794062877656.548,
+     "here": false
+    }
+   }
+  }
+ ]
+}
