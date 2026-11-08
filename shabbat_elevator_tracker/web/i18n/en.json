@@ -36,6 +36,8 @@
  "reason.outside_shabbat_plain": "Outside Shabbat",
  "reason.provisional": "Heard the elevator once. Confirming on the next round (about 7 minutes).",
  "degraded.audio_lost": "Audio lost — predicting from the last sync",
+ "degraded.server_down": "Server unreachable (last update {ago}) — this may be out of date",
+ "reason.server_down": "Server unreachable (last update {ago}). Predictions are hidden until it is back.",
  "state.idle": "Idle",
  "state.searching": "Listening",
  "state.provisional": "Confirming",

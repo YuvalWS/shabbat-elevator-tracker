@@ -110,6 +110,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
 .edit-btn:hover { color: var(--accent); }
 .countdown { font-size: clamp(2.5rem, min(42cqw, 36vh), 18rem); font-weight: 750; line-height: 1;
   font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.countdown.stale { opacity: 0.4; }
 .countdown.here { color: var(--ok); font-size: clamp(2rem, min(15cqw, 24vh), 8rem); }
 .next-at { font-size: clamp(1.1rem, min(8cqw, 9vh), 4rem); font-weight: 600; font-variant-numeric: tabular-nums; }
 .next-then { color: var(--muted); font-size: 0.95rem; }

@@ -1,6 +1,7 @@
 // REST + Server-Sent Events client with clock-offset tracking and polling fallback.
 
 const API = "/api/v1";
+const SILENCE_MS = 40000; // pings come every 15 s
 
 export class ApiClient {
   constructor(base, onState, onTransport) {
@@ -72,6 +73,17 @@ export class ApiClient {
     this.rttTimer = setInterval(() => {
       if (this.transport === "sse") this.fetchState().catch(() => {});
     }, 300000);
+    // A server that dies without closing the connection (power cut, frozen container) leaves the
+    // browser waiting forever with no error. The server pings every 15 s, so 40 s of silence means
+    // the stream is dead: say so, and start over (SSE, with polling until it opens).
+    this.watchdog = setInterval(() => {
+      if (this.stopped || this.transport !== "sse" || Date.now() - this.lastContact < SILENCE_MS) return;
+      if (this.es) this.es.close();
+      this._setTransport("down");
+      this.sseFailures = 0;
+      this._startSse();
+      this._startPolling();
+    }, 5000);
   }
 
   stop() {
@@ -80,6 +92,7 @@ export class ApiClient {
     clearInterval(this.pollTimer);
     clearTimeout(this.retrySseTimer);
     clearInterval(this.rttTimer);
+    clearInterval(this.watchdog);
   }
 
   _startSse() {
@@ -90,6 +103,7 @@ export class ApiClient {
     this.es = es;
     es.addEventListener("open", () => {
       opened = true;
+      this.lastContact = Date.now();
       this.sseFailures = 0;
       clearInterval(this.pollTimer);
       this.pollTimer = null;

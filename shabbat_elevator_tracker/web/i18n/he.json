@@ -36,6 +36,8 @@
  "reason.outside_shabbat_plain": "מחוץ לשבת",
  "reason.provisional": "המעלית נשמעה פעם אחת. מאמת בסיבוב הבא (כ-7 דקות).",
  "degraded.audio_lost": "השמע אבד — החיזוי ממשיך מהסנכרון האחרון",
+ "degraded.server_down": "אין חיבור לשרת (עדכון אחרון {ago}) — ייתכן שהמידע לא עדכני",
+ "reason.server_down": "אין חיבור לשרת (עדכון אחרון {ago}). התחזיות מוסתרות עד שיחזור.",
  "state.idle": "לא פעיל",
  "state.searching": "מאזין",
  "state.provisional": "מאמת",

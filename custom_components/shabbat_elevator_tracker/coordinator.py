@@ -102,6 +102,11 @@ class ElevatorCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 _LOGGER.debug("SSE disconnected: %s", err)
             self.transport = "poll"
             self.update_interval = timedelta(seconds=POLL_INTERVAL_SECONDS)
+            # Ask the server now. Setting update_interval alone schedules nothing (push mode left
+            # no timer), so without this the entities would keep the last pushed values and stay
+            # available while the server is gone. A failed refresh makes them unavailable at once,
+            # and any refresh schedules the next poll.
+            await self.async_refresh()
             await asyncio.sleep(backoff)
             backoff = min(backoff * 2, SSE_RETRY_MAX_SECONDS)
 

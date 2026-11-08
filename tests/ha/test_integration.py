@@ -4,9 +4,11 @@ Needs pytest-homeassistant-custom-component (Python 3.13); run with tools/run-ha
 Not collected by the main suite (see tests/ha/conftest.py).
 """
 
+import asyncio
 import json
 from pathlib import Path
 
+import aiohttp
 import pytest
 from homeassistant import config_entries
 from homeassistant.const import STATE_UNAVAILABLE
@@ -14,6 +16,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
 from homeassistant.helpers import entity_registry as er
 from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMockResponse
 
 from custom_components.shabbat_elevator_tracker.const import CONF_HOME_FLOOR, CONF_URL, DOMAIN
 from custom_components.shabbat_elevator_tracker.model import building_name, next_arrival
@@ -113,13 +116,53 @@ async def test_next_arrival_unavailable_when_waiting(hass: HomeAssistant, aiocli
 
 async def test_sse_push_updates(hass: HomeAssistant, aioclient_mock):
     body = "retry: 5000\n\nevent: state\ndata: " + json.dumps(LOCKED) + "\n\n"
+    seen: list[str] = []
+
+    def record(ev) -> None:
+        new = ev.data.get("new_state")
+        if new is not None and ev.data["entity_id"].startswith("binary_sensor.") and ev.data["entity_id"].endswith("_elevator_running"):
+            seen.append(new.state)
+
+    hass.bus.async_listen("state_changed", record)
     entry = await setup_entry(hass, aioclient_mock, state=WAITING, sse_body=body)
-    await hass.async_block_till_done()
-    coord = entry.runtime_data
-    assert coord.data["sync"]["state"] == "locked"  # came from the SSE event, /state said searching
-    ent = er.async_get(hass)
-    assert hass.states.get(ent.async_get_entity_id("binary_sensor", DOMAIN, f"{IID}_running")).state == "on"
+    for _ in range(100):
+        if "on" in seen and seen[-1] == "off":
+            break
+        await asyncio.sleep(0.01)
+    # the pushed event (locked) reached the entity although /state said searching ...
+    assert "on" in seen, seen
+    # ... and when the stream closed, the integration asked the server again instead of
+    # keeping the last pushed value
+    assert seen[-1] == "off", seen
     await hass.config_entries.async_unload(entry.entry_id)
+
+
+async def test_entities_unavailable_when_server_goes_away(hass: HomeAssistant, aioclient_mock):
+    """The push stream drops and the server no longer answers: no stale values."""
+    calls = {"n": 0}
+
+    async def state_once_then_down(method, url, data):
+        calls["n"] += 1
+        if calls["n"] > 1:
+            raise aiohttp.ClientError("server gone")
+        return AiohttpClientMockResponse(method, url, json=LOCKED)
+
+    aioclient_mock.get(f"{URL}/api/v1/health", json=HEALTH)
+    aioclient_mock.get(f"{URL}/api/v1/state", side_effect=state_once_then_down)
+    aioclient_mock.get(f"{URL}/api/v1/stream", exc=aiohttp.ClientError("refused"))
+    entry = MockConfigEntry(domain=DOMAIN, data={CONF_URL: URL}, options={CONF_HOME_FLOOR: "3"},
+                            unique_id=IID, title="Example building")
+    entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(entry.entry_id)
+    await hass.async_block_till_done()
+    ent = er.async_get(hass)
+    sid = ent.async_get_entity_id("sensor", DOMAIN, f"{IID}_sync_state")
+    for _ in range(100):  # the push loop runs as a background task
+        if hass.states.get(sid).state == STATE_UNAVAILABLE:
+            break
+        await asyncio.sleep(0.01)
+    assert hass.states.get(sid).state == STATE_UNAVAILABLE
+    assert hass.states.get(ent.async_get_entity_id("binary_sensor", DOMAIN, f"{IID}_running")).state == STATE_UNAVAILABLE
 
 
 async def test_options_flow(hass: HomeAssistant, aioclient_mock):

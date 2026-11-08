@@ -117,6 +117,9 @@ function fmtCountdown(sec) {
   return h ? `${h}:${String(m).padStart(2, "0")}:${ss}` : `${m}:${ss}`;
 }
 
+// how long to keep showing the last known schedule while the server is unreachable
+const STALE_HIDE_MS = 5 * 60 * 1000;
+
 function fmtAgo(ms) {
   const s = Math.max(0, Math.round(ms / 1000));
   if (s < 5) return t("ago.now");
@@ -218,7 +221,9 @@ function render() {
   const now = window.__api.now();
   const tl = state.timeline;
   const floors = state.building.floors;
-  const valid = state.prediction.valid && tl.anchor_time_ms != null;
+  // server unreachable: the countdown runs on from the last state, marked as such, then is hidden
+  const lostMs = transport === "down" ? Date.now() - (window.__api.lastContact || 0) : 0;
+  const valid = state.prediction.valid && tl.anchor_time_ms != null && lostMs <= STALE_HIDE_MS;
   const pos = valid ? position(tl, floors, tl.anchor_time_ms, now) : null;
 
   // floor picker: big while no floor is chosen (or while changing it), otherwise a title + edit button
@@ -235,6 +240,8 @@ function render() {
     showMessage("");
   } else if (!onRouteSet().has(f)) {
     showMessage(t("floor.not_on_route", { floor: f }), "warn");
+  } else if (lostMs > STALE_HIDE_MS) {
+    showMessage(t("reason.server_down", { ago: fmtAgo(lostMs) }), "bad");
   } else if (!valid) {
     showMessage(reasonText(), state.prediction.reason === "elevator_paused" ? "warn" : "");
   } else {
@@ -253,7 +260,9 @@ function render() {
       $("next-then").textContent = after ? t("next.then", { time: fmtTime(after.arrive_at) }) : "";
     }
     if (state.prediction.degraded) $("next-then").textContent = t("degraded." + state.prediction.degraded);
+    if (lostMs) $("next-then").textContent = t("degraded.server_down", { ago: fmtAgo(lostMs) });
   }
+  cd.classList.toggle("stale", !!lostMs);
 
   // status line
   const sy = state.sync;
@@ -273,7 +282,7 @@ function render() {
   const car = $("car-line");
   if (pos && pos.kind === "stop") car.textContent = t("car.at_floor", { floor: pos.floor }) + " · " + t("doors." + pos.doors);
   else if (pos) car.textContent = t("car.moving", { from: pos.from, to: pos.to }) + " · " + t("direction." + pos.direction);
-  else car.textContent = t("state." + sy.state);
+  else car.textContent = lostMs > STALE_HIDE_MS ? "" : t("state." + sy.state);
 
   renderRoute(pos);
   if (document.documentElement.dataset.tier === "lg") {

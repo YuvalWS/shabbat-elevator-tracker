@@ -36,6 +36,8 @@
  "reason.outside_shabbat_plain": "Hors Chabbat",
  "reason.provisional": "Ascenseur entendu une fois. Confirmation au prochain tour (environ 7 minutes).",
  "degraded.audio_lost": "Audio perdu — prévision depuis la dernière synchronisation",
+ "degraded.server_down": "Serveur injoignable (dernière mise à jour {ago}) — peut-être plus à jour",
+ "reason.server_down": "Serveur injoignable (dernière mise à jour {ago}). Prévisions masquées jusqu'à son retour.",
  "state.idle": "Inactif",
  "state.searching": "À l'écoute",
  "state.provisional": "Confirmation",

@@ -1032,3 +1032,11 @@ Changes made while implementing, with the reason:
   behind a CDN such as Cloudflare, `.js`/`.css` without a header are cached at the edge
   for hours, so after an update the page could pair new HTML with old scripts. Clients
   still get 304s, so the cost is one small request per file.
+- **No stale data when the server is gone.** HA: when the push stream drops, the
+  integration asks `/state` at once; before, setting the poll interval scheduled nothing, so
+  the entities kept the last pushed values and stayed available indefinitely. Now they go
+  unavailable within seconds (a stopped server) or 45 s (a frozen one: the stream's read
+  timeout), then poll every 60 s. Web client: a watchdog treats 40 s without a ping as a dead
+  stream (a frozen or powered-off server never closes it, and the browser would wait forever);
+  the countdown is then dimmed with "server unreachable, last update …", and after 5 minutes
+  the prediction, the car line and the shaft's car are hidden until the server is back.
