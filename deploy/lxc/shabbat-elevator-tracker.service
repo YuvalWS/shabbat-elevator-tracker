@@ -12,7 +12,7 @@ Environment=SET_CONFIG=/etc/shabbat-elevator-tracker/config.yaml
 Environment=SET_DATA_DIR=/var/lib/shabbat-elevator-tracker
 Environment=PYTHONUNBUFFERED=1
 EnvironmentFile=-/etc/shabbat-elevator-tracker/env
-ExecStart=/opt/shabbat-elevator-tracker/venv/bin/python -m shabbat_elevator_tracker serve
+ExecStart=/opt/shabbat-elevator-tracker/current/venv/bin/python -m shabbat_elevator_tracker serve
 Restart=always
 RestartSec=5
 NoNewPrivileges=true

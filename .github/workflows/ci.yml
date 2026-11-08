@@ -25,7 +25,7 @@ jobs:
       - run: pytest
       - run: node --test tests/web/model.test.mjs
       - run: for f in shabbat_elevator_tracker/web/*.js tools/*.js; do node --check "$f"; done
-      - run: bash -n deploy/lxc/install.sh && bash -n deploy/proxmox/create-lxc.sh
+      - run: for f in deploy/lxc/*.sh deploy/proxmox/*.sh; do bash -n "$f"; done
 
   home-assistant:
     runs-on: ubuntu-latest

@@ -1,8 +1,8 @@
 # Shabbat Elevator Tracker — Design Document
 
-Status: **rev 6** (2026-11-08): implemented as v0.1. Rev 3 added the hdate calendar,
+Status: **rev 7** (2026-11-08): implemented as v0.1. Rev 3 added the hdate calendar,
 GPL-3.0-or-later, authenticated audio sources and the Givat Shmuel location; rev 4 records
-what changed during implementation (section 23); rev 6 adds the quick lock and the listening messages (23.2); rev 5 adds the one-time floor picker,
+what changed during implementation (section 23); rev 6 adds the quick lock and the listening messages (23.2); rev 7 makes the LXC install updatable in place (23.3); rev 5 adds the one-time floor picker,
 the short-landscape layout, Hebrew numerals, per-language building names and a local Home
 Assistant for development (23.1).
 
@@ -688,19 +688,24 @@ Home Assistant's language.
 
 Two scripts and a step-by-step guide, `docs/proxmox.md`:
 
-- `deploy/proxmox/create-lxc.sh` — run **on the Proxmox host** as root. Arguments with
-  defaults: `--ctid` (next free), `--hostname shabbat-elevator`, `--storage local-lvm`,
-  `--bridge vmbr0`, `--ip dhcp` (or `10.0.0.50/24 --gw 10.0.0.1`), `--cores 1`,
-  `--memory 256`, `--disk 2`. Downloads the Debian 12 template with `pveam` if missing,
-  `pct create` (unprivileged, `onboot 1`), starts it, `pct push`es and runs `install.sh`,
-  prints the URL. Idempotent where possible; `--dry-run` prints the commands.
+- `deploy/proxmox/create-lxc.sh` — run **on the Proxmox host** as root, also as a
+  one-liner (`bash -c "$(curl -fsSL …/create-lxc.sh)"`). With no arguments it asks, in the
+  style of the community helper scripts: default or advanced settings (whiptail), then a
+  summary to confirm. Arguments with defaults: `--ctid` (next free),
+  `--hostname shabbat-elevator`, `--storage local-lvm`, `--bridge vmbr0`, `--ip dhcp` (or
+  `10.0.0.50/24 --gw 10.0.0.1`), `--cores 1`, `--memory 256`, `--disk 3`. Downloads the
+  Debian 12 template with `pveam` if missing, `pct create` (unprivileged, `onboot 1`, tag
+  `shabbat-elevator`), starts it, `pct push`es and runs `install.sh`, prints the URL.
+  `--dry-run` prints the commands.
 - `deploy/lxc/install.sh` — run **inside** the container (or any Debian/Ubuntu host):
-  `apt install python3 python3-venv ffmpeg`, user `shabbat-elevator`, venv in
-  `/opt/shabbat-elevator-tracker`, `pip install` from a release tarball or git tag,
+  `apt install python3 python3-venv ffmpeg`, user `shabbat-elevator`, each install a new
+  release (`/opt/shabbat-elevator-tracker/releases/<date>-<commit>/venv`) behind the
+  `current` symlink, switched back automatically if `/api/v1/health` doesn't answer;
+  `pip install` from git (main or a tag) or a local tarball/directory,
   config at `/etc/shabbat-elevator-tracker/config.yaml` (from the example if absent),
   data in `/var/lib/shabbat-elevator-tracker`, systemd unit (`Restart=always`,
   `ProtectSystem=strict`, `ReadWritePaths=/var/lib/shabbat-elevator-tracker`). Also
-  `update.sh`.
+  `update.sh`, installed as the `update` command, and a login banner.
 - The guide covers: running the script, editing the config (audio source, location),
   `journalctl -u shabbat-elevator-tracker`, opening the web UI, adding the HA
   integration, updating, and backup (`/etc` + `/var/lib`).
@@ -777,7 +782,7 @@ shabbat-elevator-tracker/
 │  └─ data/parsha_ids.py  data/holiday_ids.py
 │  └─ web/  (+ web/i18n/en.json he.json fr.json)   # inside the package
 ├─ custom_components/shabbat_elevator_tracker/
-├─ deploy/proxmox/create-lxc.sh  deploy/lxc/install.sh update.sh shabbat-elevator-tracker.service
+├─ deploy/proxmox/create-lxc.sh  deploy/lxc/install.sh update.sh motd.sh shabbat-elevator-tracker.service
 ├─ tools/git-hooks/pre-push      # blocks pushing audio / test-data (already in place)
 ├─ docs/  DESIGN.md  api.md  proxmox.md  screenshots/
 ├─ tests/
@@ -1008,3 +1013,14 @@ Changes made while implementing, with the reason:
   while provisional or unconfirmed, and "listening for it to start again" while paused.
   The HA dashboard's note follows the sync state the same way instead of always saying
   "not running".
+
+### 23.3 Rev 7 (2026-11-08)
+
+- **Updatable LXC install** (14.2), in the style of the Proxmox community helper scripts
+  but self-contained in this repository (no dependency on their framework): the host
+  script runs as a curl one-liner with a default/advanced menu, and `update` inside the
+  container installs the latest main only when its commit differs from the running one.
+  Releases sit side by side and `current` is switched atomically; a release that fails
+  the health check within 30 s is switched back and deleted, and `update --rollback` goes
+  back by hand. Two releases are kept (about 120 MB each), hence the 3 GB default disk.
+  The repository is public so the one-liner, `update` and HACS can fetch it.
