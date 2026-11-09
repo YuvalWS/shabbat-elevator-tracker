@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "shabbat-elevator-tracker"
-version = "0.1.0"
+version = "0.1.2"
 description = "Predicts when a Shabbat elevator reaches each floor by listening to one floor."
 readme = "README.md"
 license = "GPL-3.0-or-later"

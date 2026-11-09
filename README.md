@@ -16,6 +16,26 @@ and end (computed offline). You get the prediction through:
 It is one small Python process (≈ 50 MB RAM, ~1–2 % of a core) and runs in Docker
 (amd64/arm64) or an LXC container (Proxmox helper script included).
 
+## Screenshots
+
+A wall screen or tablet gets the elevator shaft next to the countdown:
+
+![Web client on a wall screen: countdown to floor 3, the route, Shabbat times and the elevator shaft](docs/screenshots/web-wall-en.png)
+
+On a phone, in any of the three languages and in light or dark:
+
+<p>
+  <img src="docs/screenshots/web-phone-en.png" alt="Web client on a phone, English, light theme" width="300">
+  &nbsp;
+  <img src="docs/screenshots/web-phone-he.png" alt="Web client on a phone, Hebrew, dark theme" width="300">
+</p>
+
+The Home Assistant dashboard from the [integration's README](custom_components/shabbat_elevator_tracker/README.md):
+
+![Home Assistant dashboard: next arrival at my floor, sync state, the Shabbat window, the elevator running and the sensor](docs/screenshots/ha-dashboard.png)
+
+All screenshots show the example building from `config.example.yaml`.
+
 ## How it works
 
 1. **Listen.** ffmpeg reads the audio stream (RTSP, HTTP, ALSA or a file).
