@@ -81,6 +81,7 @@ a { color: var(--accent); }
   background: var(--panel); cursor: pointer; padding: 0 10px; font-weight: 600;
 }
 .icon-btn[hidden] { display: none; }
+.top-actions .icon-btn { padding-inline: 0; } /* all four header buttons the same width */
 .icon-btn svg { display: block; }
 .icon-btn:hover { border-color: var(--accent); }
 button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible {
