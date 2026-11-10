@@ -24,7 +24,7 @@ const apiBase = apiBaseFromUrl() ?? store.get("api") ?? DEFAULT_API_BASE;
 // ?floor=3&lang=he&theme=dark&clock=12 preset the settings (e.g. for a wall tablet) and are saved
 {
   const q = new URLSearchParams(location.search);
-  const valid = { lang: ["auto", ...LANGS], theme: ["auto", "light", "dark"], clock: ["24", "12"] };
+  const valid = { lang: ["auto", ...LANGS], theme: ["auto", "light", "dark"], clock: ["24", "12"], keepawake: ["1", "0"] };
   for (const k of Object.keys(valid)) if (valid[k].includes(q.get(k))) store.set(k, q.get(k));
   if (q.get("floor")) store.set("floor:" + apiBase, q.get("floor"));
 }
@@ -34,6 +34,8 @@ const ui = {
   theme: store.get("theme", "auto"),
   clock: store.get("clock", "24"),
   advanced: store.get("advanced", "0") === "1",
+  keepawake: store.get("keepawake", "1") === "1", // on by default
+
   floor: store.get("floor:" + apiBase),
   picking: false, // floor picker reopened to change the floor
 };
@@ -44,6 +46,7 @@ let transport = "connecting";
 let screenMode = "off";
 let lastFloorsKey = "";
 const shaft = new Shaft($("shaft"));
+const keeper = new ScreenKeeper((m) => { screenMode = m; $("screen-mode").textContent = t("screen." + m); });
 
 // ---------------------------------------------------------------- i18n
 async function applyLanguage() {
@@ -57,6 +60,8 @@ async function applyLanguage() {
     e.title = tr.t(e.dataset.i18nTitle);
     e.setAttribute("aria-label", e.title);
   }
+  updateThemeButton(); // titles that depend on the current state, set after the generic ones above
+  updateFullscreenButton();
   $("btn-lang").textContent = lang.toUpperCase();
   $("btn-lang").title = tr.t("header.language");
   const sel = $("set-lang");
@@ -80,6 +85,41 @@ function applyTheme() {
   if (ui.theme === "auto") document.documentElement.removeAttribute("data-theme");
   else document.documentElement.dataset.theme = ui.theme;
   $("set-theme").value = ui.theme;
+  updateThemeButton();
+}
+
+/** The theme being shown right now: the chosen one, or the system's when "automatic". */
+function effectiveTheme() {
+  if (ui.theme !== "auto") return ui.theme;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function updateThemeButton() {
+  const b = $("btn-theme");
+  if (!tr) return;
+  b.title = t(effectiveTheme() === "dark" ? "header.theme_light" : "header.theme_dark");
+  b.setAttribute("aria-label", b.title);
+}
+
+// ---------------------------------------------------------------- full screen
+const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement || null;
+
+function updateFullscreenButton() {
+  const b = $("btn-fullscreen");
+  const on = !!fsElement();
+  b.setAttribute("aria-pressed", String(on));
+  if (!tr) return;
+  b.title = t(on ? "header.fullscreen_exit" : "header.fullscreen");
+  b.setAttribute("aria-label", b.title);
+}
+
+function toggleFullscreen() {
+  const root = document.documentElement;
+  if (fsElement()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  else {
+    const p = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+    if (p && p.catch) p.catch(() => { /* refused by the browser */ });
+  }
 }
 
 function applyTier() {
@@ -458,11 +498,20 @@ function setupControls() {
   $("btn-floor").addEventListener("click", () => openPicker(true));
   $("floor-cancel").addEventListener("click", () => openPicker(false));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ui.picking && ui.floor) openPicker(false); });
+  // one tap = the other theme than the one on screen (also when "automatic" is showing it);
+  // "automatic" is chosen in Settings
   $("btn-theme").addEventListener("click", () => {
-    ui.theme = { auto: "light", light: "dark", dark: "auto" }[ui.theme] || "auto";
+    ui.theme = effectiveTheme() === "dark" ? "light" : "dark";
     store.set("theme", ui.theme);
     applyTheme();
   });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", updateThemeButton);
+  if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
+    $("btn-fullscreen").hidden = false; // e.g. not on iPhone Safari
+    $("btn-fullscreen").addEventListener("click", toggleFullscreen);
+    document.addEventListener("fullscreenchange", updateFullscreenButton);
+    document.addEventListener("webkitfullscreenchange", updateFullscreenButton);
+  }
   const menu = $("lang-menu");
   $("btn-lang").addEventListener("click", async (e) => {
     if (!menu.hidden) { menu.hidden = true; return; }
@@ -489,6 +538,8 @@ function setupControls() {
     $("api-base").value = apiBase;
     $("set-clock").value = ui.clock;
     $("set-advanced").checked = ui.advanced;
+    $("set-keepawake").checked = ui.keepawake;
+    $("advanced").open = false; // server and debug stay folded until asked for
     $("screen-mode").textContent = t("screen." + screenMode);
     $("test-result").textContent = "";
     dlg.showModal();
@@ -496,6 +547,11 @@ function setupControls() {
   $("set-lang").addEventListener("change", (e) => setLang(e.target.value));
   $("set-theme").addEventListener("change", (e) => { ui.theme = e.target.value; store.set("theme", ui.theme); applyTheme(); });
   $("set-clock").addEventListener("change", (e) => { ui.clock = e.target.value; store.set("clock", ui.clock); renderShabbat(); render(); });
+  $("set-keepawake").addEventListener("change", (e) => {
+    ui.keepawake = e.target.checked;
+    store.set("keepawake", ui.keepawake ? "1" : "0");
+    if (ui.keepawake) keeper.enable(); else keeper.disable();
+  });
   $("set-advanced").addEventListener("change", (e) => {
     ui.advanced = e.target.checked; store.set("advanced", ui.advanced ? "1" : "0");
     $("debug").hidden = !ui.advanced;
@@ -537,8 +593,9 @@ async function main() {
   const api = new ApiClient(apiBase, onState, (tp) => { transport = tp; render(); if (ui.advanced) renderDebug(); });
   window.__api = api;
   api.start();
-  const keeper = new ScreenKeeper((m) => { screenMode = m; $("screen-mode").textContent = t("screen." + m); });
-  keeper.enable();
+  if (ui.keepawake) keeper.enable();
+  updateThemeButton();
+  updateFullscreenButton();
   $("debug").hidden = !ui.advanced;
   setInterval(render, 250);
   setInterval(() => { if (state) renderShabbat(); }, 60000);
