@@ -109,7 +109,8 @@ The web client keeps the screen awake while it is open:
   tiny invisible looping video after the first tap, which works on most phones but is
   less reliable (battery savers may still dim the screen).
 
-Settings shows which mode is active. For a wall tablet, HTTPS is the reliable option.
+Settings has a switch for it (on by default). The video fallback can be turned off under
+*Advanced*, where the mode in use is shown. For a wall tablet, HTTPS is the reliable option.
 
 ## Public exposure
 

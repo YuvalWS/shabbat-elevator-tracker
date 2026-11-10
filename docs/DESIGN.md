@@ -1032,6 +1032,12 @@ Changes made while implementing, with the reason:
   behind a CDN such as Cloudflare, `.js`/`.css` without a header are cached at the edge
   for hours, so after an update the page could pair new HTML with old scripts. Clients
   still get 304s, so the cost is one small request per file.
+  **That was not enough** (2026-11-10): Cloudflare still cached the scripts and, with its
+  default *Browser Cache TTL* (4 h), replaced our header with `max-age=14400`, so a phone
+  kept an old page for hours (HTML was untouched, it is not cached). The server now also
+  sends `CDN-Cache-Control: no-store`, which makes Cloudflare pass these files through
+  uncached with our header intact. If a deployment still shows `max-age=14400` on
+  `app.js`, add a Cloudflare Cache Rule (hostname equals the site → Bypass cache).
 - **No stale data when the server is gone.** HA: when the push stream drops, the
   integration asks `/state` at once; before, setting the poll interval scheduled nothing, so
   the entities kept the last pushed values and stayed available indefinitely. Now they go

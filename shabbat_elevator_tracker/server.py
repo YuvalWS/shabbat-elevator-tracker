@@ -64,10 +64,16 @@ async def _revalidate_static(request: web.Request, handler):
 
     Without a Cache-Control header a CDN may keep app.js for hours, so after an update
     the page would mix new HTML with old scripts. no-cache still allows 304 replies.
+
+    Cloudflare still caches scripts and styles and, with its default "Browser Cache TTL",
+    replaces our header with `max-age=14400` for the visitor, which kept phones on an old
+    version for hours. `CDN-Cache-Control: no-store` tells it not to cache these at all, so
+    our header reaches the browser unchanged.
     """
     resp = await handler(request)
     if not request.path.startswith("/api/") and "Cache-Control" not in resp.headers:
         resp.headers["Cache-Control"] = "no-cache"
+        resp.headers["CDN-Cache-Control"] = "no-store"
     return resp
 
 

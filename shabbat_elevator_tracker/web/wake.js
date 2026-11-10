@@ -9,12 +9,20 @@ export class ScreenKeeper {
     this.lock = null;
     this.video = null;
     this.enabled = false;
+    this.allowVideo = true; // the fallback when the browser's own screen lock is not available
     this._onVis = () => {
       if (document.visibilityState === "visible" && this.enabled) this._acquire();
     };
     this._onGesture = () => {
-      if (this.enabled && this.mode !== "wakelock") this._startVideo();
+      if (this.enabled && this.allowVideo && this.mode !== "wakelock") this._startVideo();
     };
+  }
+
+  /** Allow or forbid the video fallback; takes effect at once. */
+  setVideo(allowed) {
+    this.allowVideo = allowed;
+    if (!allowed && this.video) { this.video.pause(); this.video.remove(); this.video = null; }
+    if (this.enabled) this._acquire();
   }
 
   _set(mode) {
@@ -42,6 +50,7 @@ export class ScreenKeeper {
   }
 
   async _acquire() {
+    if (this.lock && !this.lock.released) { this._set("wakelock"); return; }
     if ("wakeLock" in navigator && window.isSecureContext) {
       try {
         this.lock = await navigator.wakeLock.request("screen");
@@ -54,6 +63,7 @@ export class ScreenKeeper {
         // denied (e.g. battery saver) or needs a gesture: fall back
       }
     }
+    if (!this.allowVideo) { this._set("no_wakelock"); return; }
     if (this.video && !this.video.paused) { this._set("video"); return; }
     this._set("needs_tap");
   }

@@ -35,6 +35,7 @@ const ui = {
   clock: store.get("clock", "24"),
   advanced: store.get("advanced", "0") === "1",
   keepawake: store.get("keepawake", "1") === "1", // on by default
+  video: store.get("video", "1") === "1", // the fallback for when the browser cannot keep the screen on
 
   floor: store.get("floor:" + apiBase),
   picking: false, // floor picker reopened to change the floor
@@ -539,6 +540,8 @@ function setupControls() {
     $("set-clock").value = ui.clock;
     $("set-advanced").checked = ui.advanced;
     $("set-keepawake").checked = ui.keepawake;
+    $("set-video").checked = ui.video;
+    $("screen-hint").hidden = window.isSecureContext; // the warning is only for plain http://
     $("advanced").open = false; // server and debug stay folded until asked for
     $("screen-mode").textContent = t("screen." + screenMode);
     $("test-result").textContent = "";
@@ -551,6 +554,11 @@ function setupControls() {
     ui.keepawake = e.target.checked;
     store.set("keepawake", ui.keepawake ? "1" : "0");
     if (ui.keepawake) keeper.enable(); else keeper.disable();
+  });
+  $("set-video").addEventListener("change", (e) => {
+    ui.video = e.target.checked;
+    store.set("video", ui.video ? "1" : "0");
+    keeper.setVideo(ui.video);
   });
   $("set-advanced").addEventListener("change", (e) => {
     ui.advanced = e.target.checked; store.set("advanced", ui.advanced ? "1" : "0");
@@ -568,13 +576,17 @@ function setupControls() {
       out.textContent = t("settings.test_ok", { name, version: r.health.version });
     } else out.textContent = r.reason === "mixed_content" ? t("settings.test_mixed") : t("settings.test_fail");
   });
-  $("btn-save").addEventListener("click", () => {
+  // Everything else applies as soon as it is changed; the server address needs a reload.
+  const saveAndClose = () => {
     const v = $("api-base").value.trim();
+    if (v === apiBase) { dlg.close(); return; }
     store.set("api", v);
     const u = new URL(location.href);
     u.searchParams.delete("api");
     location.href = u.toString();
-  });
+  };
+  $("btn-save").addEventListener("click", saveAndClose);
+  $("btn-x").addEventListener("click", saveAndClose);
   window.addEventListener("resize", applyTier);
 }
 
@@ -593,6 +605,7 @@ async function main() {
   const api = new ApiClient(apiBase, onState, (tp) => { transport = tp; render(); if (ui.advanced) renderDebug(); });
   window.__api = api;
   api.start();
+  keeper.allowVideo = ui.video;
   if (ui.keepawake) keeper.enable();
   updateThemeButton();
   updateFullscreenButton();

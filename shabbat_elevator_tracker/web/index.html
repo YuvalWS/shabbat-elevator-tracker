@@ -17,7 +17,9 @@
     <h1 class="title" id="title" data-i18n="app.title">Shabbat Elevator</h1>
     <div class="top-actions">
       <button class="icon-btn" id="btn-lang" type="button" aria-haspopup="menu">EN</button>
-      <button class="icon-btn" id="btn-theme" type="button" data-i18n-title="header.theme" aria-label="Theme">◐</button>
+      <button class="icon-btn" id="btn-theme" type="button" data-i18n-title="header.theme" aria-label="Theme">
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
       <button class="icon-btn" id="btn-fullscreen" type="button" data-i18n-title="header.fullscreen" aria-label="Full screen" aria-pressed="false" hidden>
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path class="fs-enter" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><path class="fs-exit" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>
       </button>
@@ -94,7 +96,12 @@
 
 <dialog id="settings">
   <form method="dialog" class="settings-form">
-    <h2 data-i18n="settings.title">Settings</h2>
+    <div class="dlg-head">
+      <h2 data-i18n="settings.title">Settings</h2>
+      <button type="button" class="icon-btn dlg-x" id="btn-x" data-i18n-title="settings.save_close" aria-label="Save and close">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
 
     <label class="field"><span data-i18n="settings.language">Language</span>
       <select id="set-lang"></select></label>
@@ -114,8 +121,7 @@
 
     <div class="field">
       <label class="check"><input type="checkbox" id="set-keepawake"> <span data-i18n="settings.screen">Keep the screen on</span></label>
-      <output id="screen-mode"></output>
-      <small data-i18n="screen.hint"></small></div>
+      <small id="screen-hint" class="warn" data-i18n="screen.hint" hidden></small></div>
 
     <details class="advanced" id="advanced">
       <summary data-i18n="settings.advanced">Advanced</summary>
@@ -126,6 +132,12 @@
           <small data-i18n="settings.server_hint"></small>
           <output id="test-result"></output>
         </label>
+
+        <div class="field">
+          <label class="check"><input type="checkbox" id="set-video"> <span data-i18n="settings.video">Video workaround (experimental)</span></label>
+          <small data-i18n="settings.video_hint"></small>
+          <output id="screen-mode"></output>
+        </div>
 
         <label class="check"><input type="checkbox" id="set-advanced"> <span data-i18n="settings.debug">Debug panel</span></label>
       </div>
